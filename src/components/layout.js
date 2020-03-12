@@ -1,16 +1,23 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import "./layout.css"
+import Navbar from "./navbar"
+
+import { ThemeProvider } from "styled-components"
+import { GlobalStyle } from "../styles/global.styles"
+
+const draculaTheme = {
+  background: "#141418",
+  backgroundSecondary: "#23232e",
+  textPrimary: "#b6b6b6",
+  textSecondary: "#ececec",
+  navbarColor: "#44475a",
+  pink: "#ff79c6",
+  green: "#50fa7b",
+  font: "Roboto",
+  fontSize: "14px",
+}
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,23 +31,15 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <ThemeProvider theme={draculaTheme}>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      />
+      <GlobalStyle />
+      <Navbar />
+      <main>{children}</main>
+    </ThemeProvider>
   )
 }
 
