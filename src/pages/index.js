@@ -25,14 +25,25 @@ const WelcomeText = styled.h6`
   margin-bottom: 0px;
 `
 
+const IntroParagraph = styled.p`
+  margin: 0 auto;
+  text-align: center;
+  width: 85%;
+`
+
 const IndexPage = () => (
-  <Layout>
+  <div>
     <SEO title="Home" />
     <PolyDiv>
       <WelcomeText>welcome to</WelcomeText>
       <SiteTitle>Div/Nectar</SiteTitle>
+      <IntroParagraph>
+        Welcome to my modest little site. Navigation to the left, take a look
+        around if you care to learn a little about me. Visit the blog if you
+        like to lern about web development.
+      </IntroParagraph>
     </PolyDiv>
-  </Layout>
+  </div>
 )
 
 export default IndexPage

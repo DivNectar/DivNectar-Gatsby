@@ -52,7 +52,7 @@ const PostContainer = styled.div`
 
 const PostTemplate = ({ data }) => {
   return (
-    <Layout>
+    <div>
       <PostContainer>
         <MDXProvider components={components}>
           <Img
@@ -62,7 +62,7 @@ const PostTemplate = ({ data }) => {
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </PostContainer>
-    </Layout>
+    </div>
   )
 }
 

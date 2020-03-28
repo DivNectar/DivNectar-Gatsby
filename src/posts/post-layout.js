@@ -20,18 +20,20 @@ const components = {
     font-family: ${draculaTheme.headerFont};
     font-weight: bold;
     font-size: 3rem;
+    text-decoration: none;
   `,
   h2: styled.h2`
     color: ${draculaTheme.green};
     font-family: ${draculaTheme.headerFont};
     font-weight: bold;
     font-size: 2rem;
-    text-decoration: underline;
+    text-decoration: none;
   `,
   h4: styled.h4`
     color: ${draculaTheme.green};
     font-family: ${draculaTheme.headerFont};
     font-weight: bold;
+    text-decoration: none;
   `,
   h6: styled.h6`
     color: ${draculaTheme.blue};
@@ -39,6 +41,7 @@ const components = {
     font-weight: bold;
     font-size: 0.8rem;
     margin: 0.3rem 1.2rem;
+    text-decoration: none;
   `,
 }
 
@@ -52,7 +55,7 @@ const PostContainer = styled.div`
 
 const PostTemplate = ({ data }) => {
   return (
-    <Layout>
+    <div>
       <PostContainer>
         <MDXProvider components={components}>
           <Img
@@ -62,7 +65,7 @@ const PostTemplate = ({ data }) => {
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </PostContainer>
-    </Layout>
+    </div>
   )
 }
 

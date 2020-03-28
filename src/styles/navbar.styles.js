@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-export const LinkText = styled(Link)`
+export const LinkText = styled(AniLink)`
   font-family: ${props => props.theme.font};
   font-size: 1.5rem;
   font-weight: bold;

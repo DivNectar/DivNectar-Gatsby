@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
@@ -14,7 +15,7 @@ const PostHeader = styled.h2`
   color: ${props => props.theme.pink};
 `
 
-const PostLink = styled(Link)`
+const PostLink = styled(AniLink)`
   color: ${props => props.theme.pink};
 `
 
@@ -37,14 +38,19 @@ export const Posts = () => {
   const data = useStaticQuery(portfolioQuery)
 
   return (
-    <Layout>
+    <div>
       <H1 centered>Portfolio</H1>
       <PostContainer>
         {data.allMdx.edges.map(({ node }, index) => {
           return (
             <PostCard key={index}>
               <PostHeader>
-                <PostLink to={"portfolio/" + node.frontmatter.slug}>
+                <PostLink
+                  paintDrip
+                  color="#bd93f9"
+                  duration={1.2}
+                  to={"portfolio/" + node.frontmatter.slug}
+                >
                   <Img
                     fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
                   />
@@ -55,7 +61,7 @@ export const Posts = () => {
           )
         })}
       </PostContainer>
-    </Layout>
+    </div>
   )
 }
 
