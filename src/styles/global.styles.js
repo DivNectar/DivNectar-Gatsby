@@ -74,9 +74,18 @@ body::-webkit-scrollbar-thumb {
 
 main {
   margin-left: 5rem;
-  padding: 1rem;
+  padding: 0;
   color: var(--text-primary);
 }
+
+a {
+  color: var(--logo-primary);
+}
+
+pre.prism-code {
+  font-family: OperatorMono Nerd Font;
+}
+
 
 .fa-primary {
   color: #bd93f9;

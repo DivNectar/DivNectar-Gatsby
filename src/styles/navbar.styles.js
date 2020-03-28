@@ -1,17 +1,32 @@
 import styled from "styled-components"
 import { Link } from "gatsby"
 
+export const LinkText = styled(Link)`
+  font-family: ${props => props.theme.font};
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: none;
+  opacity: 1;
+  margin-left: 1rem;
+  color: ${props => props.theme.textSecondary};
+  color: ${props => props.theme.pink};
+  text-align: center;
+`
+
 export const Nav = styled.nav`
   position: fixed;
   background-color: var(--nav-primary);
   transition: width 600ms ease;
-  /* Testing */
   top: 0;
 
   @media only screen and (max-width: 600px) {
     bottom: 0;
     width: 100vw;
     height: 5rem;
+    :hover .link-text {
+      display: none;
+    }
   }
   @media only screen and (min-width: 600px) {
     top: 0;
@@ -20,8 +35,10 @@ export const Nav = styled.nav`
     &:hover {
       width: 16rem;
     }
-    &:hover .logo-text {
-      left: 0px;
+    :hover .link-text {
+      display: inline;
+      opacity: 1;
+      transition: all 3000ms;
     }
   }
 `
@@ -67,45 +84,23 @@ export const Logo = styled.li`
   font-size: 1.2rem;
   letter-spacing: 0.3ch;
   width: 100%;
+  &:hover svg {
+    transform: rotate(-180deg);
+    margin-left: 11rem;
+  }
+  &:hover span {
+    left: 20px;
+  }
   svg {
-    color: #50fa7b;
     transform: rotate(0deg);
     transition: var(--transition-speed);
-    @media only screen and (min-width: 600px) {
-    }
-    :hover {
-      margin-left: 11rem;
-      transform: rotate(-180deg);
-    }
   }
   @media only screen and (max-width: 600px) {
     display: none;
   }
 `
 
-export const LinkText = styled(Link)`
-  & {
-    font-family: ${props => props.theme.font};
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    display: none;
-    margin-left: 1rem;
-    color: ${props => props.theme.textSecondary};
-    color: ${props => props.theme.pink};
-    text-align: center;
-  }
-  &:hover {
-    display: inline;
-  }
-  @media only screen and (min-width: 600px) {
-    &:hover {
-      display: inline;
-    }
-  }
-`
-
-export const NavLink = styled.a`
+export const NavLink = styled.span`
   display: flex;
   align-items: center;
   height: 5rem;
@@ -113,9 +108,6 @@ export const NavLink = styled.a`
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   transition: var(--transition-speed);
-  &:hover ${LinkText} {
-    display: inline;
-  }
   &:hover {
     filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
@@ -133,9 +125,11 @@ export const NavLink = styled.a`
 
 export const LogoText = styled.span`
   display: inline;
-  margin-left: 1rem;
   position: absolute;
   left: -999px;
   transition: var(--transition-speed);
-  color: #50fa7b;
+  cursor: default;
+  &:hover {
+    left: 0px;
+  }
 `

@@ -1,44 +1,34 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
+// custom components
 import Navbar from "./navbar"
 
+// style providers
 import { ThemeProvider } from "styled-components"
+import styled from "styled-components"
+import { draculaTheme } from "../styles/themes.js"
 import { GlobalStyle } from "../styles/global.styles"
 
-const draculaTheme = {
-  background: "#141418",
-  backgroundSecondary: "#23232e",
-  textPrimary: "#b6b6b6",
-  textSecondary: "#ececec",
-  navbarColor: "#44475a",
-  pink: "#ff79c6",
-  green: "#50fa7b",
-  font: "Roboto",
-  fontSize: "14px",
-}
+const Container = styled.div`
+  display: ${props => (props.center ? "flex" : "block")};
+  justify-content: ${props => (props.center ? "center" : "none")};
+  width: ${props => (props.center ? "65%" : "100%")};
+  margin: ${props => (props.center ? "auto" : "none")};
+`
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+const Layout = ({ children }, props) => {
   return (
     <ThemeProvider theme={draculaTheme}>
       <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto&display=swap"
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
       />
       <GlobalStyle />
       <Navbar />
-      <main>{children}</main>
+      <main>
+        <Container>{children}</Container>
+      </main>
     </ThemeProvider>
   )
 }

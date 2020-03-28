@@ -15,6 +15,7 @@ export const Navbar = () => {
     light: "solar",
     solar: "dracula",
   }
+
   let theme = localStorage.getItem("theme")
   let bodyClass = document.body.classList
   theme && bodyClass.add(theme)
@@ -29,7 +30,7 @@ export const Navbar = () => {
   }
 
   return (
-    <Nav>
+    <Nav style={{ zIndex: 100 }}>
       <NavbarNav>
         <Logo>
           <NavLink>
@@ -42,7 +43,7 @@ export const Navbar = () => {
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 448 512"
-              className="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x"
+              className="svg-inline--fa logoarrows fa-angle-double-right fa-w-14 fa-5x"
             >
               <g className="fa-group">
                 <path
@@ -85,7 +86,9 @@ export const Navbar = () => {
                 ></path>
               </g>
             </svg>
-            <LinkText>Home</LinkText>
+            <LinkText className="link-text" to="/">
+              Home
+            </LinkText>
           </NavLink>
         </NavItem>
 
@@ -114,7 +117,9 @@ export const Navbar = () => {
                 ></path>
               </g>
             </svg>
-            <LinkText>Tutorials</LinkText>
+            <LinkText className="link-text" to="/posts/">
+              Blog
+            </LinkText>
           </NavLink>
         </NavItem>
 
@@ -143,7 +148,9 @@ export const Navbar = () => {
                 ></path>
               </g>
             </svg>
-            <LinkText to="/posts/">Portfolio</LinkText>
+            <LinkText className="link-text" to="/portfolio/">
+              Portfolio
+            </LinkText>
           </NavLink>
         </NavItem>
 
@@ -172,7 +179,9 @@ export const Navbar = () => {
                 ></path>
               </g>
             </svg>
-            <LinkText>Contact Me</LinkText>
+            <LinkText className="link-text" to="/contact/">
+              Contact
+            </LinkText>
           </NavLink>
         </NavItem>
 
@@ -206,7 +215,7 @@ export const Navbar = () => {
                 ></path>
               </g>
             </svg>
-            <LinkText>Themify</LinkText>
+            <LinkText className="link-text">Themify</LinkText>
           </NavLink>
         </NavItem>
       </NavbarNav>

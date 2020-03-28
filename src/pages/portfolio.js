@@ -4,8 +4,6 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
-// TODO combine the post styles here and the post styles for the portfolio into
-
 const PostContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -36,18 +34,17 @@ const PostCard = styled.div`
 `
 
 export const Posts = () => {
-  const data = useStaticQuery(postsQuery)
-  console.log(data)
+  const data = useStaticQuery(portfolioQuery)
 
   return (
     <Layout>
-      <H1 centered>Blog</H1>
+      <H1 centered>Portfolio</H1>
       <PostContainer>
         {data.allMdx.edges.map(({ node }, index) => {
           return (
             <PostCard key={index}>
               <PostHeader>
-                <PostLink to={"blog/" + node.frontmatter.slug}>
+                <PostLink to={"portfolio/" + node.frontmatter.slug}>
                   <Img
                     fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
                   />
@@ -62,9 +59,9 @@ export const Posts = () => {
   )
 }
 
-const postsQuery = graphql`
-  query postsQuery {
-    allMdx(filter: { frontmatter: { type: { eq: "post" } } }, limit: 10) {
+const portfolioQuery = graphql`
+  query portfolioQuery {
+    allMdx(filter: { frontmatter: { type: { eq: "portfolio" } } }, limit: 10) {
       edges {
         node {
           frontmatter {
