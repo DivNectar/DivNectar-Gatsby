@@ -56,6 +56,8 @@ body {
   /* background-color: white; */
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   color: var(--text-primary);
   background: var(--bg-primary);
 }
@@ -76,6 +78,10 @@ main {
   margin-left: 5rem;
   padding: 0;
   color: var(--text-primary);
+  @media only screen and (max-width: 600px) {
+    margin-left: 0;
+    margin-top: 6rem;
+  }
 }
 
 a {

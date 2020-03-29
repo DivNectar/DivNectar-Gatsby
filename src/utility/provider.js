@@ -6,8 +6,6 @@ export const myContext = React.createContext()
 const Provider = props => {
   const [currentUser, setAuth] = useState(null)
   const firebase = useFirebase()
-  console.log(firebase)
-  let signInWithGoogle = null
 
   useEffect(() => {
     if (!firebase) return
@@ -16,7 +14,6 @@ const Provider = props => {
 
     return firebase.instance.auth().onAuthStateChanged(user => {
       setAuth(user)
-      console.log("User:", user)
     })
   }, [firebase])
 

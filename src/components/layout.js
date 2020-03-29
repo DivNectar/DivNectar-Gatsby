@@ -21,6 +21,10 @@ const Container = styled.div`
 const Layout = ({ children }, props) => {
   return (
     <ThemeProvider theme={draculaTheme}>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      ></meta>
       <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto&display=swap"
         rel="stylesheet"

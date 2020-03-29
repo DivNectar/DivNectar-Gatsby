@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-export const LinkText = styled(AniLink)`
+export const LinkText = styled.span`
   font-family: ${props => props.theme.font};
   font-size: 1.5rem;
   font-weight: bold;
@@ -69,9 +69,9 @@ export const NavbarNav = styled.ul`
 `
 export const NavItem = styled.li`
   width: 100%;
-  :last-child {
+  /* :last-child {
     margin-top: auto;
-  }
+  } */
 `
 
 export const Logo = styled.li`
@@ -100,7 +100,30 @@ export const Logo = styled.li`
   }
 `
 
-export const NavLink = styled.span`
+export const NavLink = styled(AniLink)`
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-speed);
+  &:hover {
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+  svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+  }
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+  }
+`
+
+export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   height: 5rem;
