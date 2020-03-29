@@ -10,24 +10,24 @@ import {
 } from "../styles/navbar.styles"
 
 export const Navbar = () => {
-  const themeMap = {
-    dracula: "light",
-    light: "solar",
-    solar: "dracula",
-  }
+  // const themeMap = {
+  //   dracula: "light",
+  //   light: "solar",
+  //   solar: "dracula",
+  // }
 
-  let theme = localStorage.getItem("theme")
-  let bodyClass = document.body.classList
-  theme && bodyClass.add(theme)
+  // let theme = "dracula"
+  // let bodyClass = document.body.classList
+  // theme && bodyClass.add(theme)
 
-  var toggleTheme = () => {
-    const current = localStorage.getItem("theme")
-    console.log("current theme is ", current)
-    const next = themeMap[current]
-    console.log("setting next theme to: ", next)
-    bodyClass.replace(current, next)
-    localStorage.setItem("theme", next)
-  }
+  // var toggleTheme = () => {
+  //   const current = localStorage.getItem("theme")
+  //   console.log("current theme is ", current)
+  //   const next = themeMap[current]
+  //   console.log("setting next theme to: ", next)
+  //   bodyClass.replace(current, next)
+  //   localStorage.setItem("theme", next)
+  // }
 
   return (
     <Nav style={{ zIndex: 100 }}>
@@ -209,7 +209,7 @@ export const Navbar = () => {
           </NavLink>
         </NavItem>
 
-        <NavItem onClick={toggleTheme} id="themeButton">
+        <NavItem id="themeButton">
           <NavLink>
             <svg
               className="theme-icon svg-inline--fa fa-moon-stars fa-w-16 fa-7x"

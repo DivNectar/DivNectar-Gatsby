@@ -27,8 +27,9 @@ const FAB = styled.div`
   transition: all 0.6s ease-in-out;
   .info-text {
     display: none;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     transition: all 2s;
+    cursor: default;
   }
   &:hover {
     box-shadow: 0 6px 14px 0 ${props => props.theme.background};
