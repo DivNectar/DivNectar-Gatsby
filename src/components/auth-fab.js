@@ -59,22 +59,18 @@ export const AuthFab = () => {
     <myContext.Consumer>
       {context => (
         <FAB>
-          {typeof window !== `undefined` ? (
-            context.currentUser ? (
-              <Insides onClick={context.signOut}>
-                <i className="fa fa-user fa-3x"></i>
-                <span className="info-text">
-                  Welcome, {context.currentUser.displayName}.
-                </span>
-              </Insides>
-            ) : (
-              <Insides onClick={context.signIn}>
-                <i className="fa fa-user-secret fa-3x"></i>
-                <span className="info-text">You're anonymous to me.</span>
-              </Insides>
-            )
+          {context.currentUser ? (
+            <Insides onClick={context.signOut}>
+              <i className="fa fa-user fa-3x"></i>
+              <span className="info-text">
+                Welcome, {context.currentUser.displayName}.
+              </span>
+            </Insides>
           ) : (
-            "wow"
+            <Insides onClick={context.signIn}>
+              <i className="fa fa-user-secret fa-3x"></i>
+              <span className="info-text">You're anonymous to me.</span>
+            </Insides>
           )}
         </FAB>
       )}
