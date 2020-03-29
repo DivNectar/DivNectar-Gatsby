@@ -11,20 +11,6 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: "gatsby-plugin-firebase",
-      options: {
-        credentials: {
-          apiKey: "AIzaSyC7a1ZBldF3KYetGUG04MJ_6mcSbCSUCxQ",
-          authDomain: "divnectar-b8c6a.firebaseapp.com",
-          databaseURL: "https://divnectar-b8c6a.firebaseio.com",
-          projectId: "divnectar-b8c6a",
-          storageBucket: "divnectar-b8c6a.appspot.com",
-          messagingSenderId: "563847961751",
-          appId: "1:563847961751:web:a2e5bc349fd2d858",
-        },
-      },
-    },
-    {
       resolve: "gatsby-plugin-transition-link",
       options: {
         layout: require.resolve(`./src/components/layout.js`),
@@ -54,11 +40,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        defaultLayouts: {
-          posts: require.resolve("./src/posts/post-layout.js"),
-          portfolios: require.resolve("./src/portfolios/portfolio-layout.js"),
-          default: require.resolve("./src/components/layout.js"),
-        },
+        // defaultLayouts: {
+        //   posts: require.resolve("./src/posts/post-layout.js"),
+        //   portfolios: require.resolve("./src/portfolios/portfolio-layout.js"),
+        //   default: require.resolve("./src/components/layout.js"),
+        // },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
