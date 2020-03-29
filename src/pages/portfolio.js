@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "../components/layout"
 import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
