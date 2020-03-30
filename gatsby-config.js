@@ -11,6 +11,20 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: [
+          "APIKEY",
+          "AUTHDOMAIN",
+          "DATABASEURL",
+          "PROJECTID",
+          "STORAGEBUCKET",
+          "MESSAGINGSENDERID",
+          "APPID",
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-transition-link",
       options: {
         layout: require.resolve(`./src/components/layout.js`),

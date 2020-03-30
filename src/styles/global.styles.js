@@ -51,6 +51,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 }
 
+@media only screen and (max-width: 600px) {
+ font-size: 12px;
+}
+
 body {
   /* color: black; */
   /* background-color: white; */
