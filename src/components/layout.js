@@ -10,17 +10,19 @@ import styled from "styled-components"
 import { draculaTheme } from "../styles/themes.js"
 import { GlobalStyle } from "../styles/global.styles"
 import { AuthFab } from "./auth-fab"
+import SEO from "./seo"
 
 const Container = styled.div`
   display: ${props => (props.center ? "flex" : "block")};
   justify-content: ${props => (props.center ? "center" : "none")};
-  width: ${props => (props.center ? "65%" : "100%")};
+  width: ${props => (props.center ? "75%" : "100%")};
   margin: ${props => (props.center ? "auto" : "none")};
 `
 
 const Layout = ({ children }, props) => {
   return (
     <ThemeProvider theme={draculaTheme}>
+      <SEO title="DivNectar" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"

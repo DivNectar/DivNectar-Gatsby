@@ -46,7 +46,7 @@ const components = {
 
 const PostContainer = styled.div`
   display: flex;
-  width: 65%;
+  width: 85%;
   flex-direction: column;
   justify-content: center;
   margin: auto;

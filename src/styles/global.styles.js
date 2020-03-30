@@ -52,9 +52,10 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 @media only screen and (max-width: 600px) {
- font-size: 12px;
+  :root{
+    font-size: 12px;
+  }
 }
-
 body {
   /* color: black; */
   /* background-color: white; */
@@ -94,6 +95,11 @@ a {
 
 pre.prism-code {
   font-family: OperatorMono Nerd Font;
+  font-size: 1.2rem;
+  overflow: auto;
+  @media only screen and (max-width: 600px) {
+    font-size: 1.3rem;
+  }
 }
 
 
