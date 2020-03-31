@@ -39,7 +39,7 @@ const IndexPage = () => (
       <IntroParagraph>
         Welcome to my modest little site. Navigation to the left, take a look
         around if you care to learn a little about me. Visit the blog if you
-        like to lern about web development.
+        like to learn about web development.
       </IntroParagraph>
     </PolyDiv>
   </div>

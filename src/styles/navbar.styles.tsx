@@ -16,7 +16,7 @@ export const LinkText = styled.span`
 
 export const Nav = styled.nav`
   position: fixed;
-  background-color: var(--nav-primary);
+  background-color: ${props => props.theme.navbarColor};
   transition: width 600ms ease;
   top: 0;
 
@@ -74,13 +74,18 @@ export const NavItem = styled.li`
   } */
 `
 
+export const ThemeButton = styled.li`
+  width: 100%;
+  margin-top: auto;
+`
+
 export const Logo = styled.li`
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 1rem;
   text-align: center;
-  color: var(--logo-secondary);
-  background: var(--logo-primary);
+  color: ${props => props.theme.pink};
+  background: ${props => props.theme.blue};
   font-size: 1.2rem;
   letter-spacing: 0.3ch;
   width: 100%;
@@ -104,14 +109,14 @@ export const NavLink = styled(AniLink)`
   display: flex;
   align-items: center;
   height: 5rem;
-  color: var(--text-primary);
+  color: ${props => props.theme.textPrimary};
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   transition: var(--transition-speed);
   &:hover {
     filter: grayscale(0%) opacity(1);
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
+    background: ${props => props.theme.backgroundSecondary};
+    color: ${props => props.theme.textSecondary};
   }
   svg {
     width: 2rem;
@@ -123,18 +128,59 @@ export const NavLink = styled(AniLink)`
   }
 `
 
+export const ThemeSwitcher = styled.div`
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: ${props => props.theme.textPrimary};
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-speed);
+  overflow: hidden;
+  &:hover {
+    filter: grayscale(0%) opacity(1);
+    background: ${props => props.theme.backgroundSecondary};
+    color: ${props => props.theme.textSecondary};
+  }
+  svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+  }
+  svg {
+    width: 2rem;
+    transition: all 0.3s linear;
+    
+    // sun icon
+    &:first-child {
+      transform: ${({ activeTheme }) =>
+        activeTheme === "light" ? "translateY(0)" : "translateY(100px)"};
+        position: absolute;
+    }
+    
+    // moon icon
+    &:nth-child(2) {
+      transform: ${({ activeTheme }) =>
+        activeTheme === "light" ? "translateY(-100px)" : "translateY(0)"};
+        position: absolute;
+    }
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+  }
+`
+
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   height: 5rem;
-  color: var(--text-primary);
+  color: ${props => props.theme.textPrimary};
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   transition: var(--transition-speed);
   &:hover {
     filter: grayscale(0%) opacity(1);
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
+    background: ${props => props.theme.backgroundSecondary};
+    color: ${props => props.theme.textSecondary};
   }
   svg {
     width: 2rem;

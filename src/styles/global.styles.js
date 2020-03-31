@@ -13,43 +13,6 @@ export const GlobalStyle = createGlobalStyle`
     --logo-primary: #ff79c6;
     --logo-secondary: #50fa7b;
   }
-  .dracula {
-  --text-primary: #b6b6b6;
-  --text-secondary: #ececec;
-  --bg-primary: #23232e;
-  --bg-secondary: #141418;
-  --nav-primary: #44475a;
-  --logo-primary: #ff79c6;
-  --logo-secondary: #50fa7b;
-}
-
-.light {
-  --text-primary: #1f1f1f;
-  --text-secondary: #000000;
-  --bg-primary: #ffffff;
-  --bg-secondary: #e4e4e4;
-}
-
-.solar {
-  --text-primary: #576e75;
-  --text-secondary: #35535c;
-  --bg-primary: #fdf6e3;
-  --bg-secondary: #f5e5b8;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #b6b6b6;
-    --background: #ececec;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --text-color: #1f1f1f;
-    --background: #000000;
-  }
-}
 
 @media only screen and (max-width: 600px) {
   :root{
@@ -63,8 +26,8 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  color: var(--text-primary);
-  background: var(--bg-primary);
+  color: ${props => props.theme.textPrimary};
+  background: ${props => props.theme.background};
 }
 
 body::-webkit-scrollbar {
@@ -82,7 +45,7 @@ body::-webkit-scrollbar-thumb {
 main {
   margin-left: 5rem;
   padding: 0;
-  color: var(--text-primary);
+  color: ${props => props.theme.textPrimary};
   @media only screen and (max-width: 600px) {
     margin-left: 0;
     margin-top: 6rem;
@@ -90,13 +53,14 @@ main {
 }
 
 a {
-  color: var(--logo-primary);
+  color: ${props => props.theme.purple};
 }
 
 pre.prism-code {
   font-family: OperatorMono Nerd Font;
   font-size: 1.2rem;
   overflow: auto;
+  background: ${props => props.theme.backgroundSecondary} !important;
   @media only screen and (max-width: 600px) {
     font-size: 1.3rem;
   }
@@ -104,11 +68,11 @@ pre.prism-code {
 
 
 .fa-primary {
-  color: #bd93f9;
+  color: ${({ theme }) => theme.green};
 }
 
 .fa-secondary {
-  color: #ff79c6;
+  color: ${({ theme }) => theme.blue};
 }
 
 .fa-primary,

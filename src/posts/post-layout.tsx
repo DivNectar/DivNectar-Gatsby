@@ -5,9 +5,9 @@ import Img from "gatsby-image"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import { draculaTheme } from "../styles/themes.js"
+import { dark } from "../styles/themes"
 
-import CodeBlock from "../components/elements/codeblock.js"
+import CodeBlock from "../components/elements/codeblock"
 
 import styled from "styled-components"
 
@@ -15,29 +15,32 @@ const components = {
   pre: props => <div {...props} />,
   code: props => <CodeBlock {...props} />,
   h1: styled.h1`
-    color: ${draculaTheme.pink};
-    font-family: ${draculaTheme.headerFont};
+    color: ${dark.pink};
+    font-family: ${dark.headerFont};
     font-weight: bold;
     font-size: 3rem;
+    text-decoration: none;
   `,
   h2: styled.h2`
-    color: ${draculaTheme.green};
-    font-family: ${draculaTheme.headerFont};
+    color: ${dark.green};
+    font-family: ${dark.headerFont};
     font-weight: bold;
     font-size: 2rem;
-    text-decoration: underline;
+    text-decoration: none;
   `,
   h4: styled.h4`
-    color: ${draculaTheme.green};
-    font-family: ${draculaTheme.headerFont};
+    color: ${dark.green};
+    font-family: ${dark.headerFont};
     font-weight: bold;
+    text-decoration: none;
   `,
   h6: styled.h6`
-    color: ${draculaTheme.blue};
-    font-family: ${draculaTheme.headerFont};
+    color: ${dark.blue};
+    font-family: ${dark.headerFont};
     font-weight: bold;
     font-size: 0.8rem;
     margin: 0.3rem 1.2rem;
+    text-decoration: none;
   `,
 }
 
@@ -66,7 +69,7 @@ const PostTemplate = ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query PortfoliosQuery($id: String) {
+  query BlogPostQuery($id: String) {
     mdx(id: { eq: $id }) {
       frontmatter {
         slug

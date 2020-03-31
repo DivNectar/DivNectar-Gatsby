@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 
 // custom components
@@ -7,21 +7,40 @@ import Navbar from "./navbar"
 // style providers
 import { ThemeProvider } from "styled-components"
 import styled from "styled-components"
-import { draculaTheme } from "../styles/themes.js"
+import { dark, light } from "../styles/themes"
 import { GlobalStyle } from "../styles/global.styles"
 import { AuthFab } from "./auth-fab"
 import SEO from "./seo"
 
-const Container = styled.div`
-  display: ${props => (props.center ? "flex" : "block")};
-  justify-content: ${props => (props.center ? "center" : "none")};
-  width: ${props => (props.center ? "75%" : "100%")};
-  margin: ${props => (props.center ? "auto" : "none")};
-`
+interface Props {
+  center: boolean
+  children: Element
+}
 
-const Layout = ({ children }, props) => {
+const Layout = ({ children, center }: Props) => {
+  const Container = styled.div`
+    display: ${props => (center ? "flex" : "block")};
+    justify-content: ${props => (center ? "center" : "none")};
+    width: ${props => (center ? "75%" : "100%")};
+    margin: ${props => (center ? "auto" : "none")};
+  `
+
+  const [theme, setTheme] = useState("light")
+
+  // The function that toggles between themes
+  const toggleTheme = () => {
+    console.log("toggled the theme")
+    // if the theme is not light, then set it to dark
+    if (theme === "light") {
+      setTheme("dark")
+      // otherwise, it should be light
+    } else {
+      setTheme("light")
+    }
+  }
+
   return (
-    <ThemeProvider theme={draculaTheme}>
+    <ThemeProvider theme={theme === "light" ? light : dark}>
       <SEO title="DivNectar" />
       <meta
         name="viewport"
@@ -37,7 +56,7 @@ const Layout = ({ children }, props) => {
       />
       <AuthFab></AuthFab>
       <GlobalStyle />
-      <Navbar />
+      <Navbar activeTheme={theme} themeToggle={toggleTheme} />
       <main>
         <Container>{children}</Container>
       </main>
@@ -47,6 +66,7 @@ const Layout = ({ children }, props) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  center: PropTypes.bool,
 }
 
 export default Layout

@@ -11,6 +11,22 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svg/,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `React`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
+    {
       resolve: `gatsby-plugin-env-variables`,
       options: {
         whitelist: [
@@ -27,7 +43,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
-        layout: require.resolve(`./src/components/layout.js`),
+        layout: require.resolve(`./src/components/layout.tsx`),
       },
     },
     {
@@ -55,9 +71,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         // defaultLayouts: {
-        //   posts: require.resolve("./src/posts/post-layout.js"),
-        //   portfolios: require.resolve("./src/portfolios/portfolio-layout.js"),
-        //   default: require.resolve("./src/components/layout.js"),
+        //   posts: require.resolve("./src/posts/post-layout.tsx"),
+        //   portfolios: require.resolve("./src/portfolios/portfolio-layout.tsx"),
+        //   default: require.resolve("./src/components/layout.tsx"),
         // },
         gatsbyRemarkPlugins: [
           {
