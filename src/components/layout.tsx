@@ -14,17 +14,17 @@ import SEO from "./seo"
 
 interface Props {
   center: boolean
-  children: Element
+  children?: Element
 }
 
-const Layout = ({ children, center }: Props) => {
-  const Container = styled.div`
-    display: ${props => (center ? "flex" : "block")};
-    justify-content: ${props => (center ? "center" : "none")};
-    width: ${props => (center ? "75%" : "100%")};
-    margin: ${props => (center ? "auto" : "none")};
-  `
+const Container = styled.div<Props & React.HTMLProps<HTMLInputElement>>`
+  display: ${props => (props.center ? "flex" : "block")};
+  justify-content: ${props => (props.center ? "center" : "none")};
+  width: ${props => (props.center ? "75%" : "100%")};
+  margin: ${props => (props.center ? "auto" : "none")};
+`
 
+const Layout = ({ children, center }: Props) => {
   const [theme, setTheme] = useState("light")
 
   // The function that toggles between themes
@@ -58,7 +58,7 @@ const Layout = ({ children, center }: Props) => {
       <GlobalStyle />
       <Navbar activeTheme={theme} themeToggle={toggleTheme} />
       <main>
-        <Container>{children}</Container>
+        <Container center={false}>{children}</Container>
       </main>
     </ThemeProvider>
   )

@@ -28,6 +28,8 @@ body {
   height: 100%;
   color: ${props => props.theme.textPrimary};
   background: ${props => props.theme.background};
+  ${"" /* TODO: make variable for theme transition speed */}
+  transition: background 600ms ease-in;
 }
 
 body::-webkit-scrollbar {

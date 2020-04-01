@@ -17,7 +17,8 @@ export const LinkText = styled.span`
 export const Nav = styled.nav`
   position: fixed;
   background-color: ${props => props.theme.navbarColor};
-  transition: width 600ms ease;
+  transition: all 600ms;
+  /* transition: width 600ms ease; */
   top: 0;
 
   @media only screen and (max-width: 600px) {
@@ -149,23 +150,24 @@ export const ThemeSwitcher = styled.div`
   }
   svg {
     width: 2rem;
-    transition: all 0.3s linear;
-    
+    transition: all 0.5s ease-in-out;
+
     // sun icon
     &:first-child {
       transform: ${({ activeTheme }) =>
         activeTheme === "light" ? "translateY(0)" : "translateY(100px)"};
-        position: absolute;
+      position: absolute;
     }
-    
+
     // moon icon
     &:nth-child(2) {
       transform: ${({ activeTheme }) =>
         activeTheme === "light" ? "translateY(-100px)" : "translateY(0)"};
-        position: absolute;
+      position: absolute;
     }
-  @media only screen and (max-width: 600px) {
-    justify-content: center;
+    @media only screen and (max-width: 600px) {
+      justify-content: center;
+    }
   }
 `
 
