@@ -20,7 +20,11 @@ import ResumeIcon from "../svg/resume.svg"
 import MoonIcon from "../svg/moon.svg"
 import SunIcon from "../svg/sun.svg"
 
-export const Navbar = ({ themeToggle, activeTheme }) => {
+import { withTheme } from "styled-components"
+
+export const Navbar = ({ themeToggle, activeTheme, theme }) => {
+  const transitionColor = theme.backgroundSecondary
+
   return (
     <Nav style={{ zIndex: 100 }}>
       <link
@@ -58,28 +62,33 @@ export const Navbar = ({ themeToggle, activeTheme }) => {
         </Logo>
 
         <NavItem>
-          <NavLink cover direction="right" bg="#44475a" to="/">
+          <NavLink cover direction="right" bg={transitionColor} to="/">
             <HomeIcon />
             <LinkText className="link-text">Home</LinkText>
           </NavLink>
         </NavItem>
 
         <NavItem>
-          <NavLink cover direction="right" bg="#44475a" to="/posts/">
+          <NavLink cover direction="right" bg={transitionColor} to="/posts/">
             <BlogIcon />
             <LinkText className="link-text">Blog</LinkText>
           </NavLink>
         </NavItem>
 
         <NavItem>
-          <NavLink cover direction="right" bg="#44475a" to="/portfolio/">
+          <NavLink
+            cover
+            direction="right"
+            bg={transitionColor}
+            to="/portfolio/"
+          >
             <PortfolioIcon />
             <LinkText className="link-text">Portfolio</LinkText>
           </NavLink>
         </NavItem>
 
         <NavItem>
-          <NavLink cover bg="#44475a" direction="right" to="/contact/">
+          <NavLink cover bg={transitionColor} direction="right" to="/contact/">
             <ResumeIcon />
             <LinkText className="link-text">Resume</LinkText>
           </NavLink>
@@ -102,4 +111,4 @@ export const Navbar = ({ themeToggle, activeTheme }) => {
   )
 }
 
-export default Navbar
+export default withTheme(Navbar)

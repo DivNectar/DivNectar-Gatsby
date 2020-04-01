@@ -38,7 +38,6 @@ const PostCard = styled.div`
 
 export const Posts = ({ theme }) => {
   const data = useStaticQuery(postsQuery)
-  console.log(theme)
 
   return (
     <div>
