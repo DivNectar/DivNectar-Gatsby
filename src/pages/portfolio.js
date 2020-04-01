@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
-import styled from "styled-components"
+import styled, { withTheme } from "styled-components"
 
 const PostContainer = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const PostCard = styled.div`
   box-shadow: 2px 2px 13px black;
 `
 
-export const Posts = () => {
+export const Portfolio = ({ theme }) => {
   const data = useStaticQuery(portfolioQuery)
 
   return (
@@ -46,7 +46,7 @@ export const Posts = () => {
               <PostHeader>
                 <PostLink
                   paintDrip
-                  color="#bd93f9"
+                  hex={theme.backgroundSecondary}
                   duration={1.2}
                   to={"portfolio/" + node.frontmatter.slug}
                 >
@@ -91,4 +91,4 @@ const portfolioQuery = graphql`
   }
 `
 
-export default Posts
+export default withTheme(Portfolio)
