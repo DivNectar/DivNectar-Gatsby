@@ -22,6 +22,7 @@ import SunIcon from "../svg/sun.svg"
 
 import { withTheme } from "styled-components"
 
+
 export const Navbar = ({ themeToggle, activeTheme, theme }) => {
   const transitionColor = theme.backgroundSecondary
 

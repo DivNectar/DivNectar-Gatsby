@@ -2,49 +2,22 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
-import styled, { withTheme } from "styled-components"
 
-const PostContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`
-
-const PostHeader = styled.h2`
-  color: ${props => props.theme.pink};
-`
-
-const PostLink = styled(AniLink)`
-  color: ${props => props.theme.pink};
-`
-
-const H1 = styled.h1`
-  color: ${props => props.theme.green};
-  text-align: ${props => (props.centered ? "center" : "left")};
-  font-family: ${props => props.theme.font};
-  font-size: 4rem;
-`
-
-const PostCard = styled.div`
-  background-color: ${props => props.theme.background};
-  padding: 2rem;
-  margin: 2rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 13px black;
-`
+import { withTheme } from "styled-components"
+import ContentCardStyles from "../styles/content-card.styles"
 
 export const Portfolio = ({ theme }) => {
   const data = useStaticQuery(portfolioQuery)
 
   return (
     <div>
-      <H1 centered>Portfolio</H1>
-      <PostContainer>
+      <ContentCardStyles.H1 centered>Portfolio</ContentCardStyles.H1>
+      <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }, index) => {
           return (
-            <PostCard key={index}>
-              <PostHeader>
-                <PostLink
+            <ContentCardStyles.PostCard key={index}>
+              <ContentCardStyles.PostHeader>
+                <ContentCardStyles.PostLink
                   paintDrip
                   hex={theme.backgroundSecondary}
                   duration={1.2}
@@ -54,12 +27,12 @@ export const Portfolio = ({ theme }) => {
                     fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
                   />
                   {node.frontmatter.title}
-                </PostLink>
-              </PostHeader>
-            </PostCard>
+                </ContentCardStyles.PostLink>
+              </ContentCardStyles.PostHeader>
+            </ContentCardStyles.PostCard>
           )
         })}
-      </PostContainer>
+      </ContentCardStyles.PostContainer>
     </div>
   )
 }

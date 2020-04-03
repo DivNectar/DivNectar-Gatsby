@@ -16,7 +16,7 @@ export const LinkText = styled.span`
 
 export const Nav = styled.nav`
   position: fixed;
-  background-color: ${props => props.theme.navbarColor};
+  background-color: ${props => props.theme.backgroundSecondary};
   transition: all 600ms;
   /* transition: width 600ms ease; */
   top: 0;
@@ -45,9 +45,10 @@ export const Nav = styled.nav`
 `
 
 export const Svg = styled.svg`
-  color: #50fa7b;
+  color: ${props => props.theme.red};
   transform: rotate(0deg);
   transition: var(--transition-speed);
+  max-height: 70px;
   @media only screen and (min-width: 600px) {
     &:hover {
       transform: rotate(-180deg);
@@ -70,9 +71,6 @@ export const NavbarNav = styled.ul`
 `
 export const NavItem = styled.li`
   width: 100%;
-  /* :last-child {
-    margin-top: auto;
-  } */
 `
 
 export const ThemeButton = styled.li`
@@ -86,17 +84,10 @@ export const Logo = styled.li`
   margin-bottom: 1rem;
   text-align: center;
   color: ${props => props.theme.pink};
-  background: ${props => props.theme.blue};
+  background: ${({ theme }) => theme.background};
   font-size: 1.2rem;
   letter-spacing: 0.3ch;
   width: 100%;
-  &:hover svg {
-    transform: rotate(-180deg);
-    margin-left: 11rem;
-  }
-  &:hover span {
-    left: 20px;
-  }
   svg {
     transform: rotate(0deg);
     transition: var(--transition-speed);
@@ -122,6 +113,7 @@ export const NavLink = styled(AniLink)`
   svg {
     width: 2rem;
     min-width: 2rem;
+    max-height: 80px;
     margin: 0 1.5rem;
   }
   @media only screen and (max-width: 600px) {
@@ -175,11 +167,22 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   height: 5rem;
+  background-color: ${({ activeTheme, theme }) =>
+    activeTheme === "light"
+      ? theme.backgroundSecondary
+      : theme.backgroundSecondary};
   color: ${props => props.theme.textPrimary};
   text-decoration: none;
   filter: grayscale(100%) opacity(0.7);
   transition: var(--transition-speed);
   &:hover {
+    span {
+      left: 20px;
+    }
+    svg {
+      transform: rotate(-180deg);
+      margin-left: 11rem;
+    }
     filter: grayscale(0%) opacity(1);
     background: ${props => props.theme.backgroundSecondary};
     color: ${props => props.theme.textSecondary};

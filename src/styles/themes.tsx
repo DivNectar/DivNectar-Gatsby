@@ -19,7 +19,7 @@ const light = {
   backgroundSecondary: "#eee8d5",
   textPrimary: "#657b83",
   textSecondary: "#657b83",
-  navbarColor: "#eee8d5",
+  navbarColor: "#93a1a1",
   pink: "#ff79c6",
   green: "#50fa7b",
   purple: "#bd93f9",
