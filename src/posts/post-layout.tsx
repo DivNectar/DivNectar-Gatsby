@@ -11,14 +11,15 @@ import ContentStyles from "../styles/content-card.styles"
 const PostTemplate = ({ data }) => {
   return (
     <div>
-      <ContentStyles.PostContainer>
+      <ContentStyles.PostsContainer>
         <MDXProvider components={MDXStyles}>
           <Img
             fluid={data.mdx.frontmatter.featuredImage.childImageSharp.fluid}
+            style={{ maxWidth: "250px" }}
           />
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
-      </ContentStyles.PostContainer>
+      </ContentStyles.PostsContainer>
     </div>
   )
 }

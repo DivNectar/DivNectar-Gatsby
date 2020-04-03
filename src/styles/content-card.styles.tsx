@@ -4,9 +4,14 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 const ContentCardStyles = {
   PostContainer: styled.div`
     display: flex;
-    width: 85%;
     flex-direction: row;
     justify-content: center;
+  `,
+  PostsContainer: styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: auto;
   `,
   PostHeader: styled.h2`
     color: ${props => props.theme.pink};

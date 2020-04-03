@@ -1,4 +1,6 @@
-const dark = {
+import { DefaultTheme } from "styled-components"
+
+const dark: DefaultTheme = {
   background: "#141418",
   backgroundSecondary: "#23232e",
   textPrimary: "#b6b6b6",
@@ -14,7 +16,7 @@ const dark = {
   fontSize: "14px",
 }
 
-const light = {
+const light: DefaultTheme = {
   background: "#fdf6e3",
   backgroundSecondary: "#eee8d5",
   textPrimary: "#657b83",

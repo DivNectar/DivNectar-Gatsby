@@ -2,7 +2,6 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
-import { withTheme } from "styled-components"
 
 // TODO combine the post styles here and the post styles for the portfolio into
 import ContentCardStyles from "../styles/content-card.styles"
@@ -19,8 +18,7 @@ export const Posts = ({ theme }) => {
             <ContentCardStyles.PostCard key={index}>
               <ContentCardStyles.PostHeader>
                 <ContentCardStyles.PostLink
-                  paintDrip
-                  hex={theme.backgroundSecondary}
+                  cover
                   duration={1.2}
                   to={"blog/" + node.frontmatter.slug}
                 >
@@ -65,4 +63,4 @@ const postsQuery = graphql`
   }
 `
 
-export default withTheme(Posts)
+export default Posts

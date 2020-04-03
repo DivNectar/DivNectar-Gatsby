@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
 
-import { withTheme } from "styled-components"
 import ContentCardStyles from "../styles/content-card.styles"
 
 export const Portfolio = ({ theme }) => {
@@ -64,4 +63,4 @@ const portfolioQuery = graphql`
   }
 `
 
-export default withTheme(Portfolio)
+export default Portfolio
