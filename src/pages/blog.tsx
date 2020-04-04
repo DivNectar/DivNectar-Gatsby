@@ -19,7 +19,7 @@ export const Posts = ({ theme }) => {
               <ContentCardStyles.PostHeader>
                 <ContentCardStyles.PostLink
                   cover
-                  duration={1.2}
+                  duration={0.6}
                   to={"blog/" + node.frontmatter.slug}
                 >
                   <Img

@@ -4,6 +4,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
 
 import ContentCardStyles from "../styles/content-card.styles"
+import { withTheme } from "styled-components"
 
 export const Portfolio = ({ theme }) => {
   const data = useStaticQuery(portfolioQuery)
@@ -19,7 +20,7 @@ export const Portfolio = ({ theme }) => {
                 <ContentCardStyles.PostLink
                   paintDrip
                   hex={theme.backgroundSecondary}
-                  duration={1.2}
+                  duration={0.6}
                   to={"portfolio/" + node.frontmatter.slug}
                 >
                   <Img
@@ -63,4 +64,4 @@ const portfolioQuery = graphql`
   }
 `
 
-export default Portfolio
+export default withTheme(Portfolio)

@@ -22,7 +22,6 @@ import SunIcon from "../svg/sun.svg"
 
 import { withTheme } from "styled-components"
 
-
 export const Navbar = ({ themeToggle, activeTheme, theme }) => {
   const transitionColor = theme.backgroundSecondary
 
@@ -63,14 +62,26 @@ export const Navbar = ({ themeToggle, activeTheme, theme }) => {
         </Logo>
 
         <NavItem>
-          <NavLink cover direction="right" bg={transitionColor} to="/">
+          <NavLink
+            cover
+            direction="right"
+            duration={0.6}
+            bg={transitionColor}
+            to="/"
+          >
             <HomeIcon />
             <LinkText className="link-text">Home</LinkText>
           </NavLink>
         </NavItem>
 
         <NavItem>
-          <NavLink cover direction="right" bg={transitionColor} to="/posts/">
+          <NavLink
+            cover
+            direction="right"
+            duration={0.6}
+            bg={transitionColor}
+            to="/blog/"
+          >
             <BlogIcon />
             <LinkText className="link-text">Blog</LinkText>
           </NavLink>
@@ -81,6 +92,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }) => {
             cover
             direction="right"
             bg={transitionColor}
+            duration={0.6}
             to="/portfolio/"
           >
             <PortfolioIcon />
@@ -89,7 +101,13 @@ export const Navbar = ({ themeToggle, activeTheme, theme }) => {
         </NavItem>
 
         <NavItem>
-          <NavLink cover bg={transitionColor} direction="right" to="/contact/">
+          <NavLink
+            cover
+            bg={transitionColor}
+            duration={0.6}
+            direction="right"
+            to="/contact/"
+          >
             <ResumeIcon />
             <LinkText className="link-text">Resume</LinkText>
           </NavLink>
