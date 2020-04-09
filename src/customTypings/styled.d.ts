@@ -6,6 +6,7 @@ import theme from "prism-react-renderer/themes/*"
 declare module "styled-components" {
   type Theme = typeof theme
   export interface DefaultTheme extends Theme {
+    name: string
     background: string
     backgroundSecondary: string
     textPrimary: string

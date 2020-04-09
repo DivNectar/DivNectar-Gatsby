@@ -121,7 +121,7 @@ export const NavLink = styled(AniLink)`
   }
 `
 
-export const ThemeSwitcher = styled.div`
+export const ThemeSwitcher = styled.div<{ activeTheme: string }>`
   display: flex;
   align-items: center;
   height: 5rem;
@@ -163,7 +163,7 @@ export const ThemeSwitcher = styled.div`
   }
 `
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<{ activeTheme: string }>`
   display: flex;
   align-items: center;
   height: 5rem;

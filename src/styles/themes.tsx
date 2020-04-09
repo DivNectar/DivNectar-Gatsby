@@ -1,6 +1,7 @@
 import { DefaultTheme } from "styled-components"
 
 const dark: DefaultTheme = {
+  name: "dark",
   background: "#141418",
   backgroundSecondary: "#23232e",
   textPrimary: "#b6b6b6",
@@ -17,10 +18,11 @@ const dark: DefaultTheme = {
 }
 
 const light: DefaultTheme = {
+  name: "light",
   background: "#fdf6e3",
   backgroundSecondary: "#eee8d5",
   textPrimary: "#657b83",
-  textSecondary: "#657b83",
+  textSecondary: "#657f86",
   navbarColor: "#93a1a1",
   pink: "#ff79c6",
   green: "#50fa7b",

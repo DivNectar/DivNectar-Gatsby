@@ -41,7 +41,10 @@ const ContentCardStyles = {
     box-shadow: 2px 2px 13px black;
   `,
   TagChip: styled(AniLink)`
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     background: ${props => props.theme.purple};
     color: ${props => props.theme.textSecondary};
     padding: 3px 12px;

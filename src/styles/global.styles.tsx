@@ -41,7 +41,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: ${props => props.theme.pink};
 }
 
 main {
@@ -83,10 +83,11 @@ td {
 }
 
 kbd {
-  padding: 4px;
-  border-radius: 4px;
-  background: ${props => props.theme.pink};
-  color: ${props => props.theme.textSecondary}
+  padding: 4px 6px;
+  border-radius: 2px;
+  background: ${({ theme }) => theme.backgroundSecondary};
+  color: ${({ theme }) => (theme.name === "light" ? "black" : "white")};
+  font-size: 1.3rem;
 }
 
 .fa-primary {
