@@ -1,9 +1,11 @@
 // import original module declarations
-import "styled-components"
-
+import {} from "styled-components"
+import { dark, light } from "../styles/themes"
+import theme from "prism-react-renderer/themes/*"
 // and extend them!
 declare module "styled-components" {
-  export interface DefaultTheme {
+  type Theme = typeof theme
+  export interface DefaultTheme extends Theme {
     background: string
     backgroundSecondary: string
     textPrimary: string

@@ -1,16 +1,23 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+
+// Components
+import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-// TODO combine the post styles here and the post styles for the portfolio into
 import ContentCardStyles from "../styles/content-card.styles"
+import IndexPage from "../pages/index"
 
-export const Posts = () => {
-  const data = useStaticQuery(postsQuery)
+const Tags = ({ pageContext, data }) => {
+  const { tag } = pageContext
+  const { edges, totalCount } = data.allMdx
+
+  const tagHeader = `${totalCount} post${
+    totalCount === 1 ? "" : "s"
+  } tagged with "${tag}"`
 
   return (
     <div>
-      <ContentCardStyles.H1 centered>Blog</ContentCardStyles.H1>
+      <ContentCardStyles.H1 centered>Tag: {tag}</ContentCardStyles.H1>
       <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }, index) => {
           return (
@@ -49,15 +56,21 @@ export const Posts = () => {
   )
 }
 
-const postsQuery = graphql`
-  query postsQuery {
-    allMdx(filter: { frontmatter: { type: { eq: "post" } } }, limit: 10) {
+export default Tags
+
+export const pageQuery = graphql`
+  query($tag: String) {
+    allMdx(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      totalCount
       edges {
         node {
           frontmatter {
             title
             slug
-            date
             tags
             featuredImage {
               id
@@ -70,11 +83,8 @@ const postsQuery = graphql`
           }
           excerpt
           body
-          tableOfContents
         }
       }
     }
   }
 `
-
-export default Posts

@@ -10,6 +10,8 @@ const ContentCardStyles = {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
+    justify-items: center;
   `,
   PostsContainer: styled.div`
     display: flex;
@@ -22,6 +24,7 @@ const ContentCardStyles = {
   `,
   PostLink: styled(AniLink)`
     color: ${props => props.theme.pink};
+    text-decoration: none;
   `,
   H1: styled.h1<H1Props>`
     color: ${props => props.theme.green};
@@ -36,6 +39,23 @@ const ContentCardStyles = {
     margin: 2rem;
     border-radius: 8px;
     box-shadow: 2px 2px 13px black;
+  `,
+  TagChip: styled(AniLink)`
+    display: inline-block;
+    background: ${props => props.theme.purple};
+    color: ${props => props.theme.textSecondary};
+    padding: 3px 12px;
+    margin: 4px 2px;
+    border-radius: 32px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    &.md-chip-hover:hover {
+      background: #ccc;
+    }
+  `,
+  TagsContainer: styled.div`
+    display: flex;
+    justify-content: center;
   `,
 }
 

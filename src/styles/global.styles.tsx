@@ -68,6 +68,26 @@ pre.prism-code {
   }
 }
 
+table {
+  width: 70%;
+  margin: 0 auto;
+}
+
+th {
+  font-weight: bold;
+  color: ${props => props.theme.green}
+}
+
+td {
+  text-align: center;
+}
+
+kbd {
+  padding: 4px;
+  border-radius: 4px;
+  background: ${props => props.theme.pink};
+  color: ${props => props.theme.textSecondary}
+}
 
 .fa-primary {
   color: ${({ theme }) => theme.green};

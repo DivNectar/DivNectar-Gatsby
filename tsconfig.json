@@ -2,13 +2,11 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "esnext"],
     "strict": true,
     "noEmit": true,
-    "isolatedModules": true,
     "esModuleInterop": true,
-    "noUnusedLocals": false,
     "allowJs": true,
     "typeRoots": ["src/customTypings", "node_modules/@types"]
   },

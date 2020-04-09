@@ -14,6 +14,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-tsconfig-paths`,
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
