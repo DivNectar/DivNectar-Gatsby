@@ -9,7 +9,6 @@ import { ThemeProvider } from "styled-components"
 import styled from "styled-components"
 import { dark, light } from "../styles/themes"
 import { GlobalStyle } from "../styles/global.styles"
-import { AuthFab } from "./auth-fab"
 import SEO from "./seo"
 
 interface Props {
@@ -17,15 +16,15 @@ interface Props {
   children?: Element
 }
 
-const Container = styled.div<Props & React.HTMLProps<HTMLInputElement>>`
+const Container = styled.div<Props>`
   display: ${props => (props.center ? "flex" : "block")};
   justify-content: ${props => (props.center ? "center" : "none")};
   width: ${props => (props.center ? "75%" : "100%")};
   margin: ${props => (props.center ? "auto" : "none")};
 `
 
-const Layout = ({ children, center }: Props) => {
-  const [theme, setTheme] = useState("light")
+const Layout: React.FC<Props> = ({ children, center }) => {
+  const [theme, setTheme] = useState("dark")
 
   // The function that toggles between themes
   const toggleTheme = () => {
@@ -54,7 +53,6 @@ const Layout = ({ children, center }: Props) => {
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
       />
-      <AuthFab></AuthFab>
       <GlobalStyle />
       <Navbar activeTheme={theme} themeToggle={toggleTheme} />
       <main>
@@ -62,11 +60,6 @@ const Layout = ({ children, center }: Props) => {
       </main>
     </ThemeProvider>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  center: PropTypes.bool,
 }
 
 export default Layout

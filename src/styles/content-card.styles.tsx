@@ -1,6 +1,10 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
+interface H1Props {
+  centered: boolean
+}
+
 const ContentCardStyles = {
   PostContainer: styled.div`
     display: flex;
@@ -19,7 +23,7 @@ const ContentCardStyles = {
   PostLink: styled(AniLink)`
     color: ${props => props.theme.pink};
   `,
-  H1: styled.h1`
+  H1: styled.h1<H1Props>`
     color: ${props => props.theme.green};
     text-align: ${props => (props.centered ? "center" : "left")};
     font-family: ${props => props.theme.font};

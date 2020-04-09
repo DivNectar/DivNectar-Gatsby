@@ -1,7 +1,5 @@
 import React from "react"
-
 import SEO from "../components/seo"
-
 import styled from "styled-components"
 
 const PolyDiv = styled.div`
@@ -36,11 +34,7 @@ const IndexPage = () => (
     <PolyDiv>
       <WelcomeText>welcome to</WelcomeText>
       <SiteTitle>Div/Nectar</SiteTitle>
-      <IntroParagraph>
-        Welcome to my modest little site. Navigation to the left, take a look
-        around if you care to learn a little about me. Visit the blog if you
-        like to learn about web development.
-      </IntroParagraph>
+      <IntroParagraph>Welcome to DivNecar.com! The site is still under development, but by all means, have a look around! You'll find a little about myself, as well as a tech blog that I write. Hope you enjoy the site!</IntroParagraph>
     </PolyDiv>
   </div>
 )

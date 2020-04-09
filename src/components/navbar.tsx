@@ -106,7 +106,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }) => {
             bg={transitionColor}
             duration={0.6}
             direction="right"
-            to="/contact/"
+            to="/resume/"
           >
             <ResumeIcon />
             <LinkText className="link-text">Resume</LinkText>
