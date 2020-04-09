@@ -12,6 +12,9 @@ const ContentCardStyles = {
     justify-content: center;
     align-items: center;
     justify-items: center;
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   `,
   PostsContainer: styled.div`
     display: flex;
