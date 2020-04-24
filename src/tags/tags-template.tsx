@@ -1,15 +1,40 @@
 import React from "react"
 
+interface TagTemplateProps {
+  pageContext: any,
+  data: {
+    allMdx: {
+      totalCount: number,
+      excerpt: string,
+      body: any,
+      edges: [{
+        node: {
+          frontmatter: {
+            title: string,
+            slug: string,
+            tags: string[],
+            featuredImage: {
+              id: string,
+              childImageSharp: {
+                fluid: any
+              }
+            }
+          }
+        }
+      }]
+    }
+  }
+}
+
 // Components
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import ContentCardStyles from "../styles/content-card.styles"
-import IndexPage from "../pages/index"
 
-const Tags = ({ pageContext, data }) => {
+const Tags = ({ pageContext, data }: TagTemplateProps) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allMdx
+  const { totalCount } = data.allMdx
 
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"

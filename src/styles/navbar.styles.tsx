@@ -163,12 +163,13 @@ export const ThemeSwitcher = styled.div<{ activeTheme: string }>`
   }
 `
 
-export const LogoContainer = styled.div<{ activeTheme: string }>`
+export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: row;
   height: 5rem;
-  background-color: ${({ activeTheme, theme }) =>
-    activeTheme === "light"
+  background-color: ${({ theme }) =>
+    theme.name === "light"
       ? theme.backgroundSecondary
       : theme.backgroundSecondary};
   color: ${props => props.theme.textPrimary};
@@ -180,17 +181,23 @@ export const LogoContainer = styled.div<{ activeTheme: string }>`
       left: 20px;
     }
     svg {
-      transform: rotate(-180deg);
-      margin-left: 11rem;
+      transform: rotate(-360deg);
+      /* margin-left: 11rem; */
+      justify-self: flex-end;
+      width: 120px;
+      height: 120px;
+      transition: all 600ms ease-in-out;
     }
     filter: grayscale(0%) opacity(1);
     background: ${props => props.theme.backgroundSecondary};
     color: ${props => props.theme.textSecondary};
   }
   svg {
-    width: 2rem;
-    min-width: 2rem;
-    margin: 0 1.5rem;
+    width: 100px;
+    height: 100px;
+    /* min-width: 2rem; */
+    margin: 0 auto;
+    justify-self: center;
   }
   @media only screen and (max-width: 600px) {
     justify-content: center;

@@ -9,10 +9,31 @@ import { MDXStyles } from "../styles/mdx-styles"
 
 import ContentStyles from "../styles/content-card.styles"
 
-const PostTemplate = ({ data }) => {
+interface PostTemplateProps {
+  data: {
+    mdx: {
+      frontmatter: {
+        id: string
+        slug: string
+        title: string
+        type: string
+        date: string
+        featuredImage: {
+          childImageSharp: {
+            fluid: any
+          }
+        }
+      }
+      id: string
+      body: any
+    }
+  }
+}
+
+const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
   const frontmatter = data.mdx.frontmatter
 
-  let disqusConfig = {
+  const disqusConfig = {
     url: `${"https://divnectar.com/" + frontmatter.slug}`,
     identifier: frontmatter.id,
     title: frontmatter.title,

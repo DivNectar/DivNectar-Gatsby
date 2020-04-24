@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
 
 // custom components
 import Navbar from "./navbar"
@@ -23,7 +22,7 @@ const Container = styled.div<Props>`
   margin: ${props => (props.center ? "auto" : "none")};
 `
 
-const Layout: React.FC<Props> = ({ children, center }) => {
+const Layout: React.FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState("dark")
 
   // The function that toggles between themes

@@ -6,7 +6,8 @@ module.exports = {
   siteMetadata: {
     title: `DivNectar`,
     description: `Tech Blog / Portfolio of Josh Melton`,
-    author: `@DivNectar`,
+    author: `@DivNectar | Josh Melton`,
+    keywords: ["vim", "neovim", "emacs", "tutorials"],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

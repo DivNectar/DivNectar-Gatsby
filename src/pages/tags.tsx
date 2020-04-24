@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
@@ -8,7 +7,25 @@ import kebabCase from "lodash/kebabCase"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 
-const TagsPage = ({
+interface TagsPageInterface {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    allMdx: {
+      group: [
+        {
+          fieldValue: string
+          totalCount: number
+        }
+      ]
+    }
+  }
+}
+
+const TagsPage: React.FC<TagsPageInterface> = ({
   data: {
     allMdx: { group },
     site: {
@@ -32,24 +49,6 @@ const TagsPage = ({
     </div>
   </div>
 )
-
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
-}
 
 export default TagsPage
 

@@ -14,7 +14,7 @@ const ResumePage: React.FC = () => {
     return (
         <PolyDiv>
             <p>
-                Hello, my name is Josh Melton. I'm from small town in North Carolina. I've had an affinity for development since age 11, when I wrote my first line of HTML code.
+                Hello, my name is Josh Melton. I&apos;m from small town in North Carolina. I&apos;ve had an affinity for development since age 11, when I wrote my first line of HTML code.
             </p>
         </PolyDiv>
     )

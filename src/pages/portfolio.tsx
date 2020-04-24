@@ -1,40 +1,45 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Img from "gatsby-image"
 
 import ContentCardStyles from "../styles/content-card.styles"
-import { withTheme } from "styled-components"
+import { DefaultTheme, withTheme } from "styled-components"
 
-export const Portfolio = ({ theme }) => {
-  const data = useStaticQuery(portfolioQuery)
+interface PortfolioProps {
+  theme: DefaultTheme,
+  data: {
+    allMDX: {
+      edges: [{
+        node: {
+          frontmatter: {
+            title: string,
+            slug: string,
+            featuredImage: {
+              id: string,
+              childImageSharp: {
+                fluid: any
+              }
+            }
+          }
+        }
+      }],
+    }
+  }
+}
 
-  return (
-    <div>
-      <ContentCardStyles.H1 centered>Portfolio</ContentCardStyles.H1>
-      <ContentCardStyles.PostContainer>
-        {data.allMdx.edges.map(({ node }, index) => {
-          return (
-            <ContentCardStyles.PostCard key={index}>
-              <ContentCardStyles.PostHeader>
-                <ContentCardStyles.PostLink
-                  paintDrip
-                  hex={theme.backgroundSecondary}
-                  duration={0.6}
-                  to={"portfolio/" + node.frontmatter.slug}
-                >
-                  <Img
-                    fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
-                  />
-                  {node.frontmatter.title}
-                </ContentCardStyles.PostLink>
-              </ContentCardStyles.PostHeader>
-            </ContentCardStyles.PostCard>
-          )
-        })}
-      </ContentCardStyles.PostContainer>
-    </div>
-  )
+interface PostNode {
+  node: {
+    frontmatter: {
+      title: string,
+      slug: string,
+      featuredImage: {
+        id: string,
+        childImageSharp: {
+          fluid: any
+        }
+      }
+    }
+  }
 }
 
 const portfolioQuery = graphql`
@@ -63,5 +68,36 @@ const portfolioQuery = graphql`
     }
   }
 `
+
+export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
+  const data = useStaticQuery(portfolioQuery)
+
+  return (
+    <div>
+      <ContentCardStyles.H1 centered>Portfolio</ContentCardStyles.H1>
+      <ContentCardStyles.PostContainer>
+        {data.allMdx.edges.map(({ node }: PostNode, index: number) => {
+          return (
+            <ContentCardStyles.PostCard key={index}>
+              <ContentCardStyles.PostHeader>
+                <ContentCardStyles.PostLink
+                  paintDrip
+                  hex={theme.backgroundSecondary}
+                  duration={0.6}
+                  to={"portfolio/" + node.frontmatter.slug}
+                >
+                  <Img
+                    fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
+                  />
+                  {node.frontmatter.title}
+                </ContentCardStyles.PostLink>
+              </ContentCardStyles.PostHeader>
+            </ContentCardStyles.PostCard>
+          )
+        })}
+      </ContentCardStyles.PostContainer>
+    </div>
+  )
+}
 
 export default withTheme(Portfolio)
