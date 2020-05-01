@@ -20,6 +20,7 @@ const Container = styled.div<Props>`
   justify-content: ${props => (props.center ? "center" : "none")};
   width: ${props => (props.center ? "75%" : "100%")};
   margin: ${props => (props.center ? "auto" : "none")};
+  overflow: visible;
 `
 
 const Layout: React.FC<Props> = ({ children }) => {

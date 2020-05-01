@@ -36,7 +36,7 @@ const IndexPage = () => (
       <SiteTitle>Div/Nectar</SiteTitle>
       <IntroParagraph>
         Welcome to DivNectar.com! The site is still under development, but by
-        all means, have a look around! You'll find a little about myself, as
+        all means, have a look around! You&aposll find a little about myself, as
         well as a tech blog that I write. Hope you enjoy the site!
       </IntroParagraph>
     </PolyDiv>

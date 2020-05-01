@@ -9,6 +9,8 @@ import { MDXStyles } from "../styles/mdx-styles"
 
 import ContentStyles from "../styles/content-card.styles"
 
+import SEO from "./../components/seo"
+
 interface PostTemplateProps {
   data: {
     mdx: {
@@ -17,10 +19,16 @@ interface PostTemplateProps {
         slug: string
         title: string
         type: string
+        excerpt: string
         date: string
         featuredImage: {
           childImageSharp: {
             fluid: any
+            resize: {
+              width: number
+              height: number
+              src: string
+            }
           }
         }
       }
@@ -30,7 +38,7 @@ interface PostTemplateProps {
   }
 }
 
-const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
+const PostTemplate: React.FC<PostTemplateProps> = ({ data }, props) => {
   const frontmatter = data.mdx.frontmatter
 
   const disqusConfig = {
@@ -39,8 +47,16 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
     title: frontmatter.title,
   }
 
+  const seoImage = data.mdx.frontmatter.featuredImage.childImageSharp.resize
+
   return (
     <div>
+      <SEO
+        title={frontmatter.title}
+        description={frontmatter.excerpt}
+        image={seoImage}
+        path={props.location.pathname}
+      />
       <ContentStyles.PostsContainer>
         <MDXProvider components={MDXStyles}>
           <Img
@@ -65,10 +81,16 @@ export const pageQuery = graphql`
         title
         type
         date
+        excerpt
         featuredImage {
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid
+            }
+            resize(width: 800) {
+              src
+              height
+              width
             }
           }
         }

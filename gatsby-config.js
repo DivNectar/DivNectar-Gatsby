@@ -8,6 +8,7 @@ module.exports = {
     description: `Tech Blog / Portfolio of Josh Melton`,
     author: `@DivNectar | Josh Melton`,
     keywords: ["vim", "neovim", "emacs", "tutorials"],
+    siteUrl: "https://divnectar.com",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -4,12 +4,14 @@ import Img from "gatsby-image"
 
 // TODO combine the post styles here and the post styles for the portfolio into
 import ContentCardStyles from "../styles/content-card.styles"
+import SEO from "src/components/seo"
 
 export const Posts = () => {
   const data = useStaticQuery(postsQuery)
 
   return (
     <div>
+      <SEO title={"DivNectar Blog"} description={"Development Blog"} />
       <ContentCardStyles.H1 centered>Blog</ContentCardStyles.H1>
       <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }, index) => {

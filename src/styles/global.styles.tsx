@@ -14,6 +14,11 @@ export const GlobalStyle = createGlobalStyle`
     --logo-secondary: #50fa7b;
   }
 
+  .tl-edges {
+    overflow-x: visible;
+    overflow: visible;
+  }
+
 @media only screen and (max-width: 600px) {
   :root{
     font-size: 12px;
@@ -25,6 +30,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  overflow: visible;
   height: 100%;
   color: ${props => props.theme.textPrimary};
   background: ${props => props.theme.background};
