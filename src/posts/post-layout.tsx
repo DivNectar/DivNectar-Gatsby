@@ -19,7 +19,6 @@ interface PostTemplateProps {
         slug: string
         title: string
         type: string
-        excerpt: string
         date: string
         featuredImage: {
           childImageSharp: {
@@ -34,6 +33,7 @@ interface PostTemplateProps {
       }
       id: string
       body: any
+      excerpt: string
     }
   }
 }
@@ -53,9 +53,9 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }, props) => {
     <div>
       <SEO
         title={frontmatter.title}
-        description={frontmatter.excerpt}
+        description={data.mdx.excerpt}
         image={seoImage}
-        path={props.location.pathname}
+        // path={props.location.pathname}
       />
       <ContentStyles.PostsContainer>
         <MDXProvider components={MDXStyles}>
@@ -81,7 +81,6 @@ export const pageQuery = graphql`
         title
         type
         date
-        excerpt
         featuredImage {
           childImageSharp {
             fluid {
@@ -97,6 +96,7 @@ export const pageQuery = graphql`
       }
       id
       body
+      excerpt
     }
   }
 `

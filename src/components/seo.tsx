@@ -50,7 +50,7 @@ function SEO({
   const metaDescription = description || site.siteMetadata.description
   const image =
     metaImage && metaImage.src
-      ? `${site.metaData.siteUrl}${metaImage.src}`
+      ? `${site.siteMetadata.siteUrl}${metaImage.src}`
       : null
   const canonical = path ? `${site.siteMetadata.siteUrl}${path}` : null
 
