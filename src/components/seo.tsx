@@ -13,7 +13,7 @@ import { useStaticQuery, graphql } from "gatsby"
 interface SEOProps {
   description: string
   lang: string
-  meta: any[]
+  meta: unknown[]
   title: string
   path?: string
   image?: {

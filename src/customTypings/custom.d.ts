@@ -3,4 +3,5 @@ declare module "*.svg" {
   export default content
 }
 
-declare module "gatsby-plugin-disqus"
+declare module "gatsby-plugin-disqus";
+declare module 'gatsby-plugin-transition-link/AniLink';

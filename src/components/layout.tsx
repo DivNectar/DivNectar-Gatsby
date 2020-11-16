@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 // custom components
 import Navbar from "./navbar"
+import { Footer } from "./footer"
 
 // style providers
 import { ThemeProvider } from "styled-components"
@@ -21,6 +22,7 @@ const Container = styled.div<Props>`
   width: ${props => (props.center ? "75%" : "100%")};
   margin: ${props => (props.center ? "auto" : "none")};
   overflow: visible;
+  min-height: calc(100vh - 40px);
 `
 
 const Layout: React.FC<Props> = ({ children }) => {
@@ -58,6 +60,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       <main>
         <Container center={false}>{children}</Container>
       </main>
+      <Footer />
     </ThemeProvider>
   )
 }

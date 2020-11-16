@@ -35,9 +35,16 @@ const IndexPage = () => (
       <WelcomeText>welcome to</WelcomeText>
       <SiteTitle>Div/Nectar</SiteTitle>
       <IntroParagraph>
-        Welcome to DivNectar.com! The site is still under development, but by
-        all means, have a look around! You&aposll find a little about myself, as
-        well as a tech blog that I write. Hope you enjoy the site!
+        <p>
+          Welcome to DivNectar! My name is Josh, I run and maintain DivNectar.
+          I'm a developer by hobby (no formal schooling) and I absolutley love
+          to create things in code!
+        </p>
+        <p>
+          I created this site both as a resume for potential employers and to
+          teach my fellow developers some of the tricks that I've learned over
+          my 6 years of development.
+        </p>
       </IntroParagraph>
     </PolyDiv>
   </div>

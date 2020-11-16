@@ -12,6 +12,7 @@ const ContentCardStyles = {
     justify-content: center;
     align-items: center;
     justify-items: center;
+    flex-wrap: wrap;
     @media only screen and (max-width: 600px) {
       flex-direction: column;
     }
@@ -19,21 +20,29 @@ const ContentCardStyles = {
   PostsContainer: styled.div`
     display: flex;
     flex-direction: column;
-    width: 85%;
-    margin: auto;
+    width: 70%;
+    margin: 0 1.3rem;
+    @media only screen and (max-width: 600px) {
+      width: 85%;
+      margin: 0 auto;
+    }
   `,
   PostHeader: styled.h2`
     color: ${props => props.theme.pink};
+    text-align: center;
   `,
   PostLink: styled(AniLink)`
     color: ${props => props.theme.pink};
     text-decoration: none;
+    text-align: center;
+    
   `,
   H1: styled.h1<H1Props>`
     color: ${props => props.theme.green};
     text-align: ${props => (props.centered ? "center" : "left")};
     font-family: ${props => props.theme.font};
     font-size: 4rem;
+    text-align: center;
   `,
   PostCard: styled.div`
     background-color: ${props => props.theme.backgroundSecondary};
@@ -42,6 +51,10 @@ const ContentCardStyles = {
     margin: 2rem;
     border-radius: 8px;
     box-shadow: 2px 2px 13px black;
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   `,
   TagChip: styled(AniLink)`
     display: flex;

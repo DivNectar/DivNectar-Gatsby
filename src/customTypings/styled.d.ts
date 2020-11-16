@@ -20,5 +20,10 @@ declare module "styled-components" {
     headerFont: string
     font: string
     fontSize: string
+    boxShadows: {
+      elevation1: string
+      elevation2: string
+      elevation3: string
+    }
   }
 }

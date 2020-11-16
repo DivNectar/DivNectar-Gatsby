@@ -1,6 +1,10 @@
 const path = require("path")
 const _ = require("lodash")
 
+
+//
+// ─── CREATE POST PAGES ──────────────────────────────────────────────────────────
+//
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions
@@ -33,14 +37,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // (or `node.frontmatter.slug`)
       path: "blog/" + node.frontmatter.slug,
       // This component will wrap our MDX content
-      component: path.resolve(`./src/posts/post-layout.tsx`),
+      component: path.resolve(`./src/layouts/post-layout.tsx`),
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
     })
   })
 
-  // now let's create the portfolio pages.
+  //
+  // ─── CREATE PORTFOLIO PAGES ─────────────────────────────────────────────────────
+  //
   const portfolioResult = await graphql(`
     query {
       allMdx(filter: { frontmatter: { type: { eq: "portfolio" } } }) {
@@ -70,7 +76,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // (or `node.frontmatter.slug`)
       path: "portfolio/" + node.frontmatter.slug,
       // This component will wrap our MDX content
-      component: path.resolve(`./src/portfolios/portfolio-layout.tsx`),
+      component: path.resolve(`./src/layouts/portfolio-layout.tsx`),
       // You can use the values in this context in
       // our page layout component
       context: { id: node.id },
@@ -102,7 +108,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     console.log("created tag page")
     createPage({
       path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
-      component: path.resolve("./src/tags/tags-template.tsx"),
+      component: path.resolve("./src/layouts/tags-layout.tsx"),
       context: {
         tag: tag.fieldValue,
       },

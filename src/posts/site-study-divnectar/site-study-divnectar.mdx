@@ -1,0 +1,144 @@
+---
+title: "Site Study: DivNectar"
+date: 05-03-2020
+slug: "divnectar-how-its-made"
+featuredImage: ./DivNectar.png
+type: "post"
+tags: ["how-its-made"]
+---
+
+# Nice Site! How'd you make it? 🧐
+
+I'm glad you asked! I've put alot of work into this site. At it's core, it is a React site that is
+staticly generated using Gatsbyjs. The site is hosted on Netlify using the contious deployment feature. I've had various hurdles while developing the site, and I'm going to write about them here.
+
+## Styling
+
+For styling, I wanted something very dynamic, because I wanted the user to have the ability to change the site theme on the fly. I've always been fond of styled components, but never really had dove into
+them very deep. I must say that I really enjoy working with styled components! Let's take a little dive into how my site works with styled components, shall we?
+
+### Global Styles
+
+Having global styles makes life easier to me for alot of things. Using styled's { createGlobalStyles } is pretty straightforward. Simple open a file, import the createGlobalStyles, and create a const to hold all of your global styles.
+
+```tsx
+import { createGlobalStyle } from "styled-components"
+
+export const GlobalStyle = createGlobalStyle`
+    .someClass {
+      background-color: red;
+    }
+  `
+```
+
+now, in your layout component we just wrap everything with the global styles like so:
+
+```typescript
+import { GlobalStyle } from "../styles/global.styles"
+
+const Layout: React.FC<Props> = ({ children }) => {
+  return (
+    <div>
+      <GlobalStyle />
+      <main>
+        <Container center={false}>{children}</Container>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+```
+
+great! now we have global styles set up! Anything you add to your global CSS will act just as regular global css would. But if you notice, my site also has the ability to change the theme.
+
+```tsx
+import { ThemeProvider } from "styled-components"
+import { dark, light } from "../styles/themes"
+```
+
+the theme file looks like this:
+
+```tsx
+import { DefaultTheme } from "styled-components"
+
+const dark: DefaultTheme = {
+  name: "dark",
+  background: "#141418",
+  backgroundSecondary: "#23232e",
+  textPrimary: "#b6b6b6",
+  textSecondary: "#ececec",
+  navbarColor: "#44475a",
+  pink: "#ff79c6",
+  green: "#50fa7b",
+  purple: "#bd93f9",
+  blue: "#8be9fd",
+  red: "#ff5555",
+  headerFont: "Open Sans, sans serif",
+  font: "Roboto, sans serif",
+  fontSize: "14px",
+  boxShadows: {
+    elevation1: `
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    `,
+    elevation2: `
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    `,
+    elevation3: `
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    `,
+  },
+}
+
+const light: DefaultTheme = {
+  name: "light",
+  background: "#fdf6e3",
+  backgroundSecondary: "#eee8d5",
+  textPrimary: "#657b83",
+  textSecondary: "#657f86",
+  navbarColor: "#93a1a1",
+  pink: "#ff79c6",
+  green: "#50fa7b",
+  purple: "#bd93f9",
+  blue: "#8be9fd",
+  red: "#ff5555",
+  headerFont: "Open Sans, sans serif",
+  font: "Roboto, sans serif",
+  fontSize: "14px",
+  boxShadows: {
+    elevation1: `
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    `,
+    elevation2: `
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    `,
+    elevation3: `
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    `,
+  },
+}
+
+export { dark, light }
+```
+
+with the themes imported, now it's time to create our piece of state that holds the current theme,
+and pass it along to the ThemeProvider object so react can swap our themes out for us. In layout.ts:
+
+```tsx
+const [theme, setTheme] = useState("dark")
+
+// The function that toggles between themes
+const toggleTheme = () => {
+  console.log("toggled the theme")
+  // if the theme is not light, then set it to dark
+  if (theme === "light") {
+    setTheme("dark")
+    // otherwise, it should be light
+  } else {
+    setTheme("light")
+  }
+}
+```
+
+Here we import the ThemeProvider, and create the state slice that holds out theme variable.

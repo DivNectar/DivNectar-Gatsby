@@ -1,0 +1,68 @@
+---
+title: "KDE: Cloning BigSur"
+date: 05-03-2020
+slug: "kde-bigsur-clone"
+featuredImage: ./kde_bigsur.png
+type: "post"
+tags: ["linux-customization"]
+---
+# Installing tools and themes
+
+
+<a id="org176fe63"></a>
+
+We&rsquo;re going to make KDE look as much like MacOS Big Sur as we can! It&rsquo;s quite a journey, so let&rsquo;s get started.
+
+
+<a id="org982acb6"></a>
+
+## Getting Prepared 💪
+
+We&rsquo;re going to need to download a tool called pacaur that allows us to download and install packages from the AUR (Arch User Repository). Then we&rsquo;ll use that to automatically download the theme packages from github and let the pacaur manager handle the install for us. You could also just visit the theme&rsquo;s github pages, clone them and then run the install script. If you really wanted too 🤔
+
+
+
+<a id="orgd465d5b"></a>
+
+## Let&rsquo;s Start Changing Things
+
+
+<a id="org8f56d17"></a>
+
+### Changing the General Theme
+
+-   Open your settings application and navigate to Apperance < Global Theme and select the WhiteSur Theme, and apply it.
+-   Next, click the application style option and select the Kvantum style and apply it.
+-   At the bottom of that screen, is a button that says Configure Gnome/GTK App Style, click that and then choose the WhiteSur theme and apply that as well.
+
+
+<a id="orgbb6d969"></a>
+
+### Now we&rsquo;ve gotten somewhere!
+
+Our system is already looking alot like MacOs! A few things aren&rsquo;t right though. We need a dock, and the bar that is at the top of a Mac, with the global app menu. So let&rsquo;s do that now.
+
+
+<a id="org511b28e"></a>
+
+### Moving Our Panel
+
+1.  Right click the panel on the desktop and click edit panel, and click the position button and drag it on up to the top of the screen.
+2.  Click the add widgets button, and search for &ldquo;global menu&rdquo;, add it right next to the app launcher icon.
+3.  Hover your mouse over the icon task manager and click remove.
+4.  press the super key (cmd key or win key) and type latte dock to launch it - it&rsquo;s pretty much configured out of the box. I like to hide the background.
+    
+    There we go, that looks much more mac-like now.
+
+
+<a id="org8ae63a2"></a>
+
+### Other Small Things
+
+You&rsquo;ll notice now a few things are still out of place. I&rsquo;ll post a few fixes I know here:
+
+1.  Firefox global menu doesn&rsquo;t work
+    -   You need to install the firefox-appmenu-bin from the AUR (using pacaur) and that will work.
+2.  The Terminal is Ugly
+    -   Yeah it is. Fuck. I just clicked configure profile in Konsole and searched for a good light theme, and then reduced the opacity on it a little. Looks great.
+3.  Fonts look like trash

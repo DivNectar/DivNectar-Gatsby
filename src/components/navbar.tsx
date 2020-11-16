@@ -1,40 +1,41 @@
-import React from "react"
+import React from "react";
 import {
   Nav,
   NavbarNav,
   NavItem,
   NavLink,
+  ExternalNavLink,
   Logo,
-  LogoText,
   LinkText,
   LogoContainer,
   ThemeButton,
   ThemeSwitcher,
-} from "../styles/navbar.styles"
+} from "../styles/navbar.styles";
 
-import LogoSVG from "../svg/DivNectar-Logo.svg"
+import LogoSVG from "../svg/DivNectar-Logo.svg";
 
-import HomeIcon from "../svg/home.svg"
-import BlogIcon from "../svg/blog.svg"
-import PortfolioIcon from "../svg/portfolio.svg"
-import ResumeIcon from "../svg/resume.svg"
+import HomeIcon from "../svg/home.svg";
+import BlogIcon from "../svg/blog.svg";
+import PortfolioIcon from "../svg/portfolio.svg";
+import ResumeIcon from "../svg/resume.svg";
+import GithubIcon from "../svg/github.svg";
 
-import MoonIcon from "../svg/moon.svg"
-import SunIcon from "../svg/sun.svg"
+import MoonIcon from "../svg/moon.svg";
+import SunIcon from "../svg/sun.svg";
 
-import { withTheme } from "styled-components"
+import { withTheme } from "styled-components";
 
 interface NavbarProps {
-  themeToggle: () => void
-  activeTheme: string
-  theme: any
+  themeToggle: () => void;
+  activeTheme: string;
+  theme: any;
 }
 
 export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
-  const transitionColor = theme.backgroundSecondary
+  const transitionColor = theme.backgroundSecondary;
 
   return (
-    <Nav style={{ zIndex: 100 }}>
+    <Nav>
       <link
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
@@ -42,7 +43,6 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
       <NavbarNav>
         <Logo>
           <LogoContainer>
-            {/* <LogoText>DivNectar</LogoText> */}
             <LogoSVG className="logo-svg" />
           </LogoContainer>
         </Logo>
@@ -99,6 +99,13 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
           </NavLink>
         </NavItem>
 
+        <NavItem>
+          <ExternalNavLink href="https://github.com/williamjmelton/dotfiles">
+            <GithubIcon />
+            <LinkText className="link-text">DotFiles</LinkText>
+          </ExternalNavLink>
+        </NavItem>
+
         <ThemeButton onClick={() => themeToggle()} id="themeButton">
           <ThemeSwitcher activeTheme={activeTheme}>
             <SunIcon />
@@ -113,7 +120,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
         </ThemeButton>
       </NavbarNav>
     </Nav>
-  )
-}
+  );
+};
 
-export default withTheme(Navbar)
+export default withTheme(Navbar);

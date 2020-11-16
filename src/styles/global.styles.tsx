@@ -1,9 +1,9 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    font-size: 16px;
-    font-family: "Open Sans";
+    font-size: ${(props) => props.theme.fontSize};
+    font-family: ${(props) => props.theme.font};
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
     --bg-primary: #23232e;
@@ -19,21 +19,23 @@ export const GlobalStyle = createGlobalStyle`
     overflow: visible;
   }
 
+  li::marker {
+    color: ${(props) => props.theme.blue};
+  }
+
 @media only screen and (max-width: 600px) {
   :root{
     font-size: 12px;
   }
 }
 body {
-  /* color: black; */
-  /* background-color: white; */
   margin: 0;
   padding: 0;
   width: 100%;
   overflow: visible;
   height: 100%;
-  color: ${props => props.theme.textPrimary};
-  background: ${props => props.theme.background};
+  color: ${(props) => props.theme.textPrimary};
+  background: ${(props) => props.theme.background};
   ${"" /* TODO: make variable for theme transition speed */}
   transition: background 600ms ease-in;
 }
@@ -47,13 +49,13 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: ${props => props.theme.pink};
+  background: ${(props) => props.theme.pink};
 }
 
 main {
   margin-left: 5rem;
   padding: 0;
-  color: ${props => props.theme.textPrimary};
+  color: ${(props) => props.theme.textPrimary};
   @media only screen and (max-width: 600px) {
     margin-left: 0;
     margin-top: 6rem;
@@ -61,14 +63,14 @@ main {
 }
 
 a {
-  color: ${props => props.theme.purple};
+  color: ${(props) => props.theme.purple};
 }
 
 pre.prism-code {
   font-family: OperatorMono Nerd Font;
   font-size: 1.2rem;
   overflow: auto;
-  background: ${props => props.theme.backgroundSecondary} !important;
+  background: ${(props) => props.theme.backgroundSecondary} !important;
   @media only screen and (max-width: 600px) {
     font-size: 1.3rem;
   }
@@ -81,7 +83,7 @@ table {
 
 th {
   font-weight: bold;
-  color: ${props => props.theme.green}
+  color: ${(props) => props.theme.green}
 }
 
 td {
@@ -108,4 +110,4 @@ kbd {
 .fa-secondary {
   transition: var(--transition-speed);
 }
-`
+`;
