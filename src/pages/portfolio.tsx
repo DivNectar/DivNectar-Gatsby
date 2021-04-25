@@ -84,7 +84,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
                   paintDrip
                   hex={theme.backgroundSecondary}
                   duration={0.6}
-                  to={"portfolio/" + node.frontmatter.slug}
+                  to={node.frontmatter.slug}
                 >
                   <Img
                     fluid={node.frontmatter.featuredImage.childImageSharp.fluid}

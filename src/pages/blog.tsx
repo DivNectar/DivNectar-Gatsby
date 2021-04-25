@@ -55,7 +55,7 @@ export const Posts = () => {
                 <ContentCardStyles.PostLink
                   cover
                   duration={0.6}
-                  to={"blog/" + node.frontmatter.slug}
+                  to={node.frontmatter.slug}
                 >
                   <Img
                     style={{ maxWidth: "200px", margin: "0 auto" }}
