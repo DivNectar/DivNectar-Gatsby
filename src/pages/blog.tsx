@@ -42,7 +42,6 @@ export const Posts = () => {
                 {node.frontmatter.tags.map((tag: string) => {
                   return (
                     <ContentCardStyles.TagChip
-                      key={index}
                       swipe
                       duration={0.6}
                       to={`/tags/${tag}`}

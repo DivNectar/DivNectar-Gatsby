@@ -35,7 +35,7 @@ const ContentCardStyles = {
     color: ${props => props.theme.pink};
     text-decoration: none;
     text-align: center;
-    
+    max-width: 300px;
   `,
   H1: styled.h1<H1Props>`
     color: ${props => props.theme.green};
@@ -47,11 +47,12 @@ const ContentCardStyles = {
   PostCard: styled.div`
     background-color: ${props => props.theme.backgroundSecondary};
     transition: all 600ms ease-in;
-    padding: 2rem;
+    padding: 0.8rem;
     margin: 2rem;
     border-radius: 8px;
     box-shadow: 2px 2px 13px black;
-    width: 375px;
+    min-width: 300px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,6 +76,7 @@ const ContentCardStyles = {
   TagsContainer: styled.div`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   `,
 }
 
