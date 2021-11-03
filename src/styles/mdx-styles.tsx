@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react"
 
 import styled from "styled-components"
@@ -64,10 +66,11 @@ const components = {
     ${AutoLink}
   `,
   h4: styled.h4`
-    color: ${props => props.theme.green};
+    color: ${props => props.theme.pink};
     font-family: ${props => props.theme.headerFont};
     font-weight: bold;
     text-decoration: none;
+    font-size: 1.2rem;
     margin-left: 1.4rem;
     ${AutoLink}
   `,
@@ -81,6 +84,10 @@ const components = {
     margin-left: 1.6rem;
     ${AutoLink}
   `,
+  li: styled.li`
+    margin: 0.6rem;
+    font-size: 0.9rem;
+  `
 }
 
 const MDXStyles = () => {

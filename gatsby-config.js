@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -7,7 +8,7 @@ module.exports = {
     title: `DivNectar`,
     description: `Tech Blog / Portfolio of Josh Melton`,
     author: `@DivNectar | Josh Melton`,
-    keywords: ["vim", "neovim", "emacs", "tutorials"],
+    keywords: ["vim", "neovim", "emacs", "tutorials", "linux", "android", "developer", "coding"],
     siteUrl: "https://divnectar.com",
   },
   plugins: [
@@ -26,6 +27,16 @@ module.exports = {
     {
       resolve: "gatsby-plugin-firebase",
       options: {
+        features: {          
+          auth: false,       
+          database: false,  
+          firestore: false,
+          storage: false,    
+          messaging: false, 
+          functions: false,  
+          performance: false, 
+          analytics:true,
+        },
         credentials: {
           apiKey: process.env.APIKEY,
           authDomain: process.env.AUTHDOMAIN,
@@ -34,6 +45,7 @@ module.exports = {
           storageBucket: process.env.STORAGEBUCKET,
           messagingSenderId: process.env.MESSAGINGSENDERID,
           appId: process.env.APPID,
+          measurementId: process.env.MEASUREMENT_ID
         },
       },
     },
@@ -123,7 +135,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
-        short_name: `starter`,
+        short_name: `DivNectar`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

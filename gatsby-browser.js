@@ -1,2 +1,4 @@
 import "firebase/auth"
-import "firebase/firestore"
+import 'firebase/analytics'
+
+import firebase from "gatsby-plugin-firebase"

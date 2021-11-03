@@ -21,6 +21,10 @@ const DisqusContainer = styled.div`
   margin: 20px 20px;
 `
 
+const FeaturedImage = styled(Img)`
+  margin: 10px;
+`
+
 interface PostTemplateProps {
   data: {
     mdx: {
@@ -126,9 +130,9 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
         />
         <ContentStyles.PostsContainer>
           <MDXProvider components={MDXStyles}>
-            <Img
+            <FeaturedImage
               fluid={frontmatter.featuredImage.childImageSharp.fluid}
-              style={{ maxWidth: "250px" }}
+              style={{ maxWidth: "250px", margin: '3rem' }}
             />
             <MDXRenderer>{data.mdx.body}</MDXRenderer>
           </MDXProvider>
