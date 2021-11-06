@@ -12,8 +12,7 @@ import { GlobalStyle } from "../styles/global.styles"
 import SEO from "./seo"
 
 interface Props {
-  center: boolean
-  children?: Element
+  center?: boolean
 }
 
 const Container = styled.div<Props>`

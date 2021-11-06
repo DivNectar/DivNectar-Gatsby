@@ -23,6 +23,8 @@ import GithubIcon from "../svg/github.svg";
 import MoonIcon from "../svg/moon.svg";
 import SunIcon from "../svg/sun.svg";
 
+import { Link } from 'gatsby';
+
 import { withTheme } from "styled-components";
 
 interface NavbarProps {
@@ -49,10 +51,6 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
 
         <NavItem>
           <NavLink
-            cover
-            direction="right"
-            duration={0.6}
-            bg={transitionColor}
             to="/"
           >
             <HomeIcon />
@@ -62,10 +60,6 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
 
         <NavItem>
           <NavLink
-            cover
-            direction="right"
-            duration={0.6}
-            bg={transitionColor}
             to="/blog/"
           >
             <BlogIcon />
@@ -75,10 +69,6 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
 
         <NavItem>
           <NavLink
-            cover
-            direction="right"
-            bg={transitionColor}
-            duration={0.6}
             to="/portfolio/"
           >
             <PortfolioIcon />
@@ -88,10 +78,6 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
 
         <NavItem>
           <NavLink
-            cover
-            bg={transitionColor}
-            duration={0.6}
-            direction="right"
             to="/resume/"
           >
             <ResumeIcon />

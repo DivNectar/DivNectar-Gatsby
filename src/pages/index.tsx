@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react"
 import SEO from "../components/seo"
 import styled from "styled-components"
+import Layout from "../components/layout"
 
 const PolyDiv = styled.div`
   display: flex;
@@ -22,14 +24,14 @@ const WelcomeText = styled.h6`
   margin-bottom: 0px;
 `
 
-const IntroParagraph = styled.p`
+const IntroParagraph = styled.div`
   margin: 0 auto;
   text-align: center;
   width: 85%;
 `
 
 const IndexPage = () => (
-  <div>
+  <>
     <SEO title="Home" />
     <PolyDiv>
       <WelcomeText>welcome to</WelcomeText>
@@ -47,7 +49,7 @@ const IndexPage = () => (
         </p>
       </IntroParagraph>
     </PolyDiv>
-  </div>
+  </>
 )
 
 export default IndexPage

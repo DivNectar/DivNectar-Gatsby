@@ -28,7 +28,7 @@ interface TagTemplateProps {
 
 // Components
 import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import ContentCardStyles from "../styles/content-card.styles"
 
@@ -66,50 +66,46 @@ const Tags = ({ pageContext, data }: TagTemplateProps) => {
                   duration={0.6}
                   to={"blog/" + node.frontmatter.slug}
                 >
-                  <Img
-                    style={{ maxWidth: "200px", margin: "0 auto" }}
-                    fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
-                  />
+                  <GatsbyImage
+                    image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+                    style={{ maxWidth: "200px", margin: "0 auto" }} />
                   {node.frontmatter.title}
                 </ContentCardStyles.PostLink>
               </ContentCardStyles.PostHeader>
             </ContentCardStyles.PostCard>
-          )
+          );
         })}
       </ContentCardStyles.PostContainer>
     </div>
-  )
+  );
 }
 
 export default Tags
 
-export const pageQuery = graphql`
-  query($tag: String) {
-    allMdx(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          frontmatter {
-            title
-            slug
-            tags
-            featuredImage {
-              id
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+export const pageQuery = graphql`query ($tag: String) {
+  allMdx(
+    limit: 2000
+    sort: {fields: [frontmatter___date], order: DESC}
+    filter: {frontmatter: {tags: {in: [$tag]}}}
+  ) {
+    totalCount
+    edges {
+      node {
+        frontmatter {
+          title
+          slug
+          tags
+          featuredImage {
+            id
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
-          excerpt
-          body
         }
+        excerpt
+        body
       }
     }
   }
+}
 `

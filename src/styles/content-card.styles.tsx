@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-
+import { Link } from "gatsby";
 interface H1Props {
   centered: boolean
 }
@@ -31,11 +31,14 @@ const ContentCardStyles = {
     color: ${props => props.theme.pink};
     text-align: center;
   `,
-  PostLink: styled(AniLink)`
+  PostLink: styled(Link)`
     color: ${props => props.theme.pink};
     text-decoration: none;
     text-align: center;
     max-width: 300px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    display: inline-block;
   `,
   H1: styled.h1<H1Props>`
     color: ${props => props.theme.green};
@@ -57,13 +60,13 @@ const ContentCardStyles = {
     flex-direction: column;
     align-items: center;
   `,
-  TagChip: styled(AniLink)`
+  TagChip: styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background: ${props => props.theme.purple};
-    color: ${props => props.theme.textSecondary};
+    color: ${props => props.theme.background};
     padding: 3px 12px;
     margin: 4px 2px;
     border-radius: 32px;

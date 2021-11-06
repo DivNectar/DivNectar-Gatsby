@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 module.exports = {
   siteMetadata: {
     title: `DivNectar`,
@@ -13,11 +8,20 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          quality: 80,
+          formats: ['auto', 'webp', 'avif'],
+          placeholder: 'blurred',
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-tsconfig-paths`,
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
@@ -50,12 +54,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-      },
-    },
-    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
@@ -82,13 +80,8 @@ module.exports = {
           "STORAGEBUCKET",
           "MESSAGINGSENDERID",
           "APPID",
+          "MEASUREMENT_ID"
         ],
-      },
-    },
-    {
-      resolve: "gatsby-plugin-transition-link",
-      options: {
-        layout: require.resolve(`./src/components/layout.tsx`),
       },
     },
     {
@@ -134,7 +127,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `DivNectar`,
         short_name: `DivNectar`,
         start_url: `/`,
         background_color: `#663399`,

@@ -1,13 +1,21 @@
 const path = require("path")
 const _ = require("lodash")
-
-
 //
 // ─── CREATE POST PAGES ──────────────────────────────────────────────────────────
 //
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
-  const { createPage } = actions
+  const { createPage, createTypes } = actions
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: Frontmatter  
+    }
+    type Frontmatter @dontInfer {
+      ...
+      embeddedImagesRemote: [File] @link(by:"url")
+    }
+  `);
+
   const postsResult = await graphql(`
     query {
       allMdx(filter: { frontmatter: { type: { eq: "post" } } }) {
@@ -32,6 +40,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = postsResult.data.allMdx.edges
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
+    console.log("Creating a page!")
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)

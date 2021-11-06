@@ -6,6 +6,7 @@ import kebabCase from "lodash/kebabCase"
 // Components
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
+import Layout from "../components/layout"
 
 interface TagsPageInterface {
   data: {
@@ -33,7 +34,7 @@ const TagsPage: React.FC<TagsPageInterface> = ({
     },
   },
 }) => (
-  <div>
+  <>
     <Helmet title={title} />
     <div>
       <h1>Tags</h1>
@@ -47,7 +48,7 @@ const TagsPage: React.FC<TagsPageInterface> = ({
         ))}
       </ul>
     </div>
-  </div>
+  </>
 )
 
 export default TagsPage

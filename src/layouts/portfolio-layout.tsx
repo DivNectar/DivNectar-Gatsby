@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img, { FluidObject } from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 
 import { MDXProvider } from "@mdx-js/react"
@@ -79,37 +79,33 @@ const PostTemplate: React.FC<PortfolioProps> = ({ data }) => {
     <div>
       <ContentStyles.PostsContainer>
         <MDXProvider components={MDXStyles}>
-          <Img
-            fluid={data.mdx.frontmatter.featuredImage.childImageSharp.fluid}
-            style={{ maxWidth: "250px" }}
-          />
+          <GatsbyImage
+            image={data.mdx.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+            style={{ maxWidth: "250px" }} />
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>
       </ContentStyles.PostsContainer>
     </div>
-  )
+  );
 }
 
-export const pageQuery = graphql`
-  query PortfoliosQuery($id: String) {
-    mdx(id: { eq: $id }) {
-      frontmatter {
-        slug
-        title
-        type
-        date
-        featuredImage {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
+export const pageQuery = graphql`query PortfoliosQuery($id: String) {
+  mdx(id: {eq: $id}) {
+    frontmatter {
+      slug
+      title
+      type
+      date
+      featuredImage {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
-      id
-      body
     }
+    id
+    body
   }
+}
 `
 
 export default PostTemplate

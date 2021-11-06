@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
+import { Link } from "gatsby";
 
 export const LinkText = styled.span`
   font-family: ${(props) => props.theme.font};
@@ -99,7 +100,7 @@ export const Logo = styled.li`
   }
 `;
 
-export const NavLink = styled(AniLink)`
+export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
   height: 5rem;

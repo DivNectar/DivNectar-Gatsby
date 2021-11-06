@@ -1,4 +1,5 @@
 import React from "react"
+import Layout from "../components/layout"
 import styled from "styled-components"
 
 const FlexDiv = styled.div`
@@ -128,7 +129,8 @@ const IntroParagraph = styled.p`
 
 const ResumePage: React.FC = () => {
   return (
-    <FlexDiv>
+    <>
+      <FlexDiv>
       <AvatarCircle></AvatarCircle>
       <HeaderBar>
         <HeaderTitle>Josh Melton</HeaderTitle>
@@ -171,6 +173,7 @@ const ResumePage: React.FC = () => {
         </TimeLineList>
       </TimeLineContainer> */}
     </FlexDiv>
+    </>
   )
 }
 export default ResumePage

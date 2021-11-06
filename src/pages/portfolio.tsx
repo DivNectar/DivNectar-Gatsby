@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage, ImageDataLike } from "gatsby-plugin-image";
 
 import ContentCardStyles from "../styles/content-card.styles"
 import { DefaultTheme, withTheme } from "styled-components"
@@ -17,7 +17,7 @@ interface PortfolioProps {
             featuredImage: {
               id: string,
               childImageSharp: {
-                fluid: any
+                gatsbyImageData: ImageDataLike
               }
             }
           }
@@ -35,45 +35,42 @@ interface PostNode {
       featuredImage: {
         id: string,
         childImageSharp: {
-          fluid: any
+          gatsbyImageData: ImageDataLike
         }
       }
     }
   }
 }
 
-const portfolioQuery = graphql`
-  query portfolioQuery {
-    allMdx(filter: { frontmatter: { type: { eq: "portfolio" } } }, limit: 10) {
-      edges {
-        node {
-          frontmatter {
-            title
-            slug
-            date
-            featuredImage {
-              id
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+const portfolioQuery = graphql`query portfolioQuery {
+  allMdx(filter: {frontmatter: {type: {eq: "portfolio"}}}, limit: 10) {
+    edges {
+      node {
+        frontmatter {
+          title
+          slug
+          date
+          featuredImage {
+            id
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
-          excerpt
-          body
-          tableOfContents
         }
+        excerpt
+        body
+        tableOfContents
       }
     }
   }
+}
 `
 
 export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
   const data = useStaticQuery(portfolioQuery)
 
   return (
-    <div>
+    <>
       <ContentCardStyles.H1 centered>Portfolio</ContentCardStyles.H1>
       <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }: PostNode, index: number) => {
@@ -81,23 +78,20 @@ export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
             <ContentCardStyles.PostCard key={index}>
               <ContentCardStyles.PostHeader>
                 <ContentCardStyles.PostLink
-                  paintDrip
-                  hex={theme.backgroundSecondary}
-                  duration={0.6}
                   to={node.frontmatter.slug}
                 >
-                  <Img
-                    fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
-                  />
+                  {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore */}
+                  <GatsbyImage image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData} />
                   {node.frontmatter.title}
                 </ContentCardStyles.PostLink>
               </ContentCardStyles.PostHeader>
             </ContentCardStyles.PostCard>
-          )
+          );
         })}
       </ContentCardStyles.PostContainer>
-    </div>
-  )
+    </>
+  );
 }
 
 export default withTheme(Portfolio)
