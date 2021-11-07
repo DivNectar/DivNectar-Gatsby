@@ -137,7 +137,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
             <Disqus config={disqusConfig} />
           </DisqusContainer>
         </div>
-        <TOC toc={toc} />
+        {/* <TOC toc={toc} /> */}
       </PostLayoutContainer>
     </>
   );

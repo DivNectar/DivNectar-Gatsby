@@ -5,17 +5,7 @@ const _ = require("lodash")
 //
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
-  const { createPage, createTypes } = actions
-  createTypes(`
-    type Mdx implements Node {
-      frontmatter: Frontmatter  
-    }
-    type Frontmatter @dontInfer {
-      ...
-      embeddedImagesRemote: [File] @link(by:"url")
-    }
-  `);
-
+  const { createPage } = actions
   const postsResult = await graphql(`
     query {
       allMdx(filter: { frontmatter: { type: { eq: "post" } } }) {

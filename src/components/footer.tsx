@@ -5,10 +5,10 @@ const FooterContainer = styled.div`
   height: 40px;
   width: 100%;
   right: 0;
-  background-color: ${props => props.theme.purple};
+  background-color: ${props => props.theme.pink};
   position: relative;
   bottom: 0;
-  opacity: 0.7;
+  opacity: 1;
   box-shadow: ${props => props.theme.boxShadows.elevation2};
   display: flex;
   align-items: center;
@@ -20,8 +20,8 @@ const Spacer = styled.div`
 
 const FooterText = styled.span`
   padding: 0 1.3rem;
-  color: ${props => props.theme.textSecondary};
-  opacity: 0.6;
+  color: ${props => props.theme.background};
+  opacity: 1;
   font-size: 0.8rem;
 `
 

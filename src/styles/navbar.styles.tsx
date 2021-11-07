@@ -100,7 +100,7 @@ export const Logo = styled.li`
   }
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled(AniLink)`
   display: flex;
   align-items: center;
   height: 5rem;

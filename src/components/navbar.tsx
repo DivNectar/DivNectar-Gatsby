@@ -24,6 +24,7 @@ import MoonIcon from "../svg/moon.svg";
 import SunIcon from "../svg/sun.svg";
 
 import { Link } from 'gatsby';
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { withTheme } from "styled-components";
 
@@ -52,6 +53,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
         <NavItem>
           <NavLink
             to="/"
+            swipe
           >
             <HomeIcon />
             <LinkText className="link-text">Home</LinkText>
@@ -61,6 +63,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
         <NavItem>
           <NavLink
             to="/blog/"
+            swipe
           >
             <BlogIcon />
             <LinkText className="link-text">Blog</LinkText>
@@ -70,6 +73,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
         <NavItem>
           <NavLink
             to="/portfolio/"
+            swipe
           >
             <PortfolioIcon />
             <LinkText className="link-text">Portfolio</LinkText>
@@ -79,6 +83,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
         <NavItem>
           <NavLink
             to="/resume/"
+            swipe
           >
             <ResumeIcon />
             <LinkText className="link-text">Resume</LinkText>

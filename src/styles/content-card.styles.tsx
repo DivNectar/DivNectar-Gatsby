@@ -31,7 +31,7 @@ const ContentCardStyles = {
     color: ${props => props.theme.pink};
     text-align: center;
   `,
-  PostLink: styled(Link)`
+  PostLink: styled(AniLink)`
     color: ${props => props.theme.pink};
     text-decoration: none;
     text-align: center;

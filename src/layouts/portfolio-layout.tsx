@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, ImageDataLike } from "gatsby-plugin-image";
 
 
 import { MDXProvider } from "@mdx-js/react"
@@ -20,7 +20,7 @@ interface PortfolioProps {
         date: string
         featuredImage: {
           childImageSharp: {
-            fluid: FluidObject
+            gatsbyImageData: ImageDataLike
             resize: {
               width: number
               height: number
