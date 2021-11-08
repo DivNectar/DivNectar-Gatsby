@@ -14,6 +14,31 @@ Custom ROMs...ahh, the beatuty of AOSP (Android Open Sourcce Project), of which 
 ## Who is this guide for?
 This guide is for anyone who wants to learn more about the Android customization scene. I will admit, it's mostly geared twards Pixel owners, as these devices are very close to stock android. Other devices, like the OnePlus phones, as well as Samsung phones, contain many many tweaks and customizations from the manufacturers, and tend to cause issues when using the methods listed here. This guide can still be useful to you in understanding the broader picture, however.
 
+## Platform tools
+Before you can think of doing anything to your phone, you need to set up your pc to work on it first. To make changes to our Android phones, we need whats called the "Platform Tools". So, I figure before we do anything else, let's make sure that we can connect to the phone though ADB and Fastboot.
+
+### Installing the tools
+
+#### Linux
+The installation method varies between linux distros.
+
+**Debian/Ubuntu/POP OS/ Zorin/ (most) Users**
+```sh sudo apt-get install android-tools-adb```
+
+**Fedora / Opensuse Users**
+```sh sudo yum install android-tools```
+
+**Arch Linux Users**
+I'm sure you already know what to do...
+
+#### Windows
+1. Download the (latest version of the android SDK platform tools) [https://dl.google.com/android/repository/platform-tools-latest-windows.zip]
+2. Extract the zip folder somewhere easy to get too (e.x. C:\platform-tools)
+3. open your windows start menu and type "env" and select the change env variables options
+4. find the entry called PATH, and double click it. A new window will open with multiple entries
+5. click add new entry on the right hand side and enter the folder path where you extracted the files (e.x. C:\platform-tools)
+6. open a terminal window (i reccomend Windows terminal over cmd prompt) and type adb to make sure the command is recognized
+
 ## Terminology
 
 ### Rooting
@@ -41,9 +66,6 @@ ADB stands for Android Debug Bridge. It allows us to do a plethora of things, in
 
 #### Fastboot
 Fastboot is a diagnostic tool which allows you to modify the file system of your Android device via your computer. It allows us to install custom firmware, recoveries, or modify existing ones. Fastboot will also allow us to boot into some .img files from the bootloader (such as a tempoary custom recovery)
-
-## Platform tools
-Before you can think of doing anything to your phone, you need to set up your pc to work on it first. To make changes to our Android phones, we need whats called the "Platform Tools". So, I figure before we do anything else, let's make sure that we can connect to the phone though ADB and Fastboot.
 
 ## Unlocking the bootloader
 
