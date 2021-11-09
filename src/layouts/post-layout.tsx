@@ -19,10 +19,6 @@ const DisqusContainer = styled.div`
   margin: 20px 20px;
 `
 
-const FeaturedImage = styled(GatsbyImage)`
-  margin: 10px;
-`
-
 interface PostTemplateProps {
   data: {
     mdx: {
@@ -107,7 +103,8 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
   `
 
   const FeaturedImage = styled(GatsbyImage)`
-    filter: ${props => props.theme.name == "light" ? "invert(100%)" : "invert(0%)"}
+    filter: ${props => props.theme.name == "dark" ? "invert(100%)" : "invert(0%)"};
+    margin: 1rem;
   `
 
   const seoImage = frontmatter.featuredImage.childImageSharp.resize

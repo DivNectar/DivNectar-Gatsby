@@ -93,4 +93,45 @@ Upon first rooting your phone, it will operate exactly the same as it does witho
 Updates become somewhat of a hassle after rooting. Any OTA update that you take will write over the boot partition where the Magisk patch lives. So what do we do? In order to update, it's reccomended to update using fastboot as opposed to updating through the system update section. The whole goal when updating is to re-patch the boot.img and flash it before the first boot after an update, so none of your modules will break and you will still retain root before and after the update. So, like I said...a little more headache, but not too awful bad. I will detail the steps for updating below.
 
 ### The steps
-//TODO 
+1. Download the .zip file for your particular rom (for stock Google images, look here)
+2. Extract the files somewhere simple (i.e. Downloads folder)
+3. Open the extracted file, and you will see a couple of .img files, and another .zip file inside
+4. Extract the nested .zip file into the containing folder as well
+5. Inside this file you will find what we need, the boot.img and the vbmeta.img
+6. I like to place the two files we need into a different folder, for simplicity. Create a new folder called "patching" and copy/paste the two files in it
+7. Download the latest Magisk release from it's GitHub, and install it on your phone
+8. Take the boot.img file from your "patching" folder and place it into your phones Downloads folder
+9. Open the app, and click the install button
+10. Tap "select and patch file" and select the boot.img file you put on your phone in step 8
+11. Un-plug and re-plug your phone (otherwise the files won't update)
+12. copy the new magisk-patched file to your "patching" folder.
+13. Ensure you've followed the section about installing the platform-tools, and then plug your phone to your PC
+14. Make sure ADB is detecting your device by running ```sh adb devices```. You should see your device listed.
+15. enter ```sh adb reboot bootloader```
+16. Your phone will reboot to a rather scary-looking screen with a warning shown
+17. Enter ```sh fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img``` in the terminal from the same directory as where you palced the vbmeta.img (in the patching folder if you're following everything)
+18. Enter ```sh fastboot flash boot mag``` and press the tab key, and it should auto-complete the rest of the file name
+19. Press enter on your keyboard and you should recieve a confirmation that the file was flashed correctly
+20. Reboot your phone back into the system, and go check the magisk app. You should see in the status section that we are indeed rooted now!!! 🥳🥳🥳 
+
+## Custom ROMs
+
+Custom ROMs bring a plethora of different things to our phones. Some have custom software pre-installed (see Calyx OS custom Firewall app, or Lineage stock apps) and some ROMs have custom tweaks under the hood (see ProtonAOSPs performace fixes) and some offer heavy customization options (see crDroid). However, the steps for installing each are generally the same. I'm going to teach you the big-boy way of flashing ROMs, using your terminal/powershell. Don't be detered! It's very simple, I promise.
+
+### Quick Run Down
+So, what we're gonna do here is as follows:
+1. Flash all data on the device
+2. Use the .zip files flash-all script to install the system
+3. flash custom kernel (if need be, this is entirely optional)
+4. reboot into our new system
+
+see? I told you, it really is as simple as that. We will also cover how to properly update your system and maintain root status without your Magisk modules breaking during the update. Let's move forward! 
+
+### Flashing Steps
+1. Download your preferred ROMs .zip file
+2. Extract the folder (or use the same folder you extracted for patching the boot.img file)
+3. Navigate into the extracted folder and locate the flash-all.sh (or flash-all.bat for Windows)
+4. reboot your phone into bootloader mode using ```sh adb reboot bootloader```
+5. Once the phone has re-booted, run ```sh fastboot -w``` to **wipe** the phone's data
+6. Run ```sh ./flash-all.sh``` **do not touch the phone during this process**
+7. Once the flash is done, the phone will return to bootloader mode. Now is the time to flash any addons or modifications (i.e. Google Apps, patched boot.img, or custom kernel). So, flash any additional files you need now. For example, if you want to root the ROM, flash the VBmeta.img file and flash the patched boot.img.
