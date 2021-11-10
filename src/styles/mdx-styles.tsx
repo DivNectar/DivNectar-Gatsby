@@ -28,7 +28,7 @@ export const AutoLink = `
 
 const components = {
   pre: (props: any) => <div {...props} />,
-  code: (props: any) => <CodeBlock {...props} />,
+  // code: (props: any) => <CodeBlock {...props} />,
   p: styled.p`
     margin: 3px;
     line-height: 1.9rem;
@@ -72,6 +72,7 @@ const components = {
     text-decoration: none;
     font-size: 1.2rem;
     margin-left: 1.4rem;
+    margin-bottom: 0.5rem;
     ${AutoLink}
   `,
   h6: styled.h6`

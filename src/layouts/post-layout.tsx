@@ -2,6 +2,8 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage, IGatsbyImageData, ImageDataLike } from "gatsby-plugin-image";
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
 
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"

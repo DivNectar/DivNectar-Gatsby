@@ -109,17 +109,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        // defaultLayouts: {
-        //   posts: require.resolve("./src/posts/post-layout.tsx"),
-        //   portfolios: require.resolve("./src/portfolios/portfolio-layout.tsx"),
-        //   default: require.resolve("./src/components/layout.tsx"),
-        // },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
             },
+          },
+          {
+            resolve: `gatsby-remark-highlight-code`,
           },
           'gatsby-remark-autolink-headers'
         ],

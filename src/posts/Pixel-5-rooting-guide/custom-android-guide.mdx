@@ -23,16 +23,20 @@ Before you can think of doing anything to your phone, you need to set up your pc
 The installation method varies between linux distros.
 
 **Debian/Ubuntu/POP OS/ Zorin/ (most) Users**
-```sh sudo apt-get install android-tools-adb```
+```shell
+sudo apt-get install android-tools-adb
+```
 
 **Fedora / Opensuse Users**
-```sh sudo yum install android-tools```
+```shell
+sudo dnf install android-tools
+```
 
 **Arch Linux Users**
 I'm sure you already know what to do...
 
 #### Windows
-1. Download the (latest version of the android SDK platform tools) [https://dl.google.com/android/repository/platform-tools-latest-windows.zip]
+1. Download the [latest version of the android SDK platform tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
 2. Extract the zip folder somewhere easy to get too (e.x. C:\platform-tools)
 3. open your windows start menu and type "env" and select the change env variables options
 4. find the entry called PATH, and double click it. A new window will open with multiple entries
@@ -67,6 +71,16 @@ ADB stands for Android Debug Bridge. It allows us to do a plethora of things, in
 #### Fastboot
 Fastboot is a diagnostic tool which allows you to modify the file system of your Android device via your computer. It allows us to install custom firmware, recoveries, or modify existing ones. Fastboot will also allow us to boot into some .img files from the bootloader (such as a tempoary custom recovery)
 
+### VBmeta.img and Veritity
+The VBmeta.img file in your ROM is a cryptographically signed file that contains verification data for verifying the systems boot.img, system.img, and other things in the operating system. In short, to modify your bootloader or flash a custom kernel, this needs to be disabled. Disabling vbmeta is as follows:
+1. Extract down into the ROM you are using's zip file, and locate the vbmeta.img file.
+2. Open a terminal / powershell window into the same directory as the vbmeta.img
+3. Run ```adb reboot bootloader```
+4. Once it's in bootloader mode, run  ```sh fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img``
+5. That's it! All done. You're now free to flash your Magisk patched boot.img, or a custom kernel. Whatever you'd like!
+
+Keep in mind, however, you'll need to re-do this step each time you update / re-flash your device! Also, not having this option enabled IS a potential security risk. I guess...if you work at the NSA or something. Specifically, your phone can no longer detect if your bootloader and a couple other things are verified (ie. has someone/something changed them) and COULD lead to code being executed on your device that you are un-aware of. Just a fair warning...the likeleyhood of this ever happening is very small.
+
 ## Unlocking the bootloader
 
 ### The steps
@@ -81,7 +95,7 @@ Fastboot is a diagnostic tool which allows you to modify the file system of your
 
 Congratulations! You now have an unlocked bootloader! 🥳
 
-## Rooting
+## Rooting Steps
 Small steps first! Let's talk about how to root the stock ROM on the pixel 5. The steps are the same for any other pixel device as far as I know, but I cannot attest to that as the only other Pixel I'v ever owned was a bootloader-locked 3XL. 
 
 ### Rooting FAQ
@@ -105,14 +119,16 @@ Updates become somewhat of a hassle after rooting. Any OTA update that you take 
 10. Tap "select and patch file" and select the boot.img file you put on your phone in step 8
 11. Un-plug and re-plug your phone (otherwise the files won't update)
 12. copy the new magisk-patched file to your "patching" folder.
-13. Ensure you've followed the section about installing the platform-tools, and then plug your phone to your PC
+13. Ensure you've followed the section about installing the [platform-tools](#platform-tools), and then plug your phone to your PC
 14. Make sure ADB is detecting your device by running ```sh adb devices```. You should see your device listed.
 15. enter ```sh adb reboot bootloader```
 16. Your phone will reboot to a rather scary-looking screen with a warning shown
 17. Enter ```sh fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img``` in the terminal from the same directory as where you palced the vbmeta.img (in the patching folder if you're following everything)
 18. Enter ```sh fastboot flash boot mag``` and press the tab key, and it should auto-complete the rest of the file name
-19. Press enter on your keyboard and you should recieve a confirmation that the file was flashed correctly
+19. Press enter on your keyboard and you should recieve a confirmation that the file was flashed correctly after a couple of minutes
 20. Reboot your phone back into the system, and go check the magisk app. You should see in the status section that we are indeed rooted now!!! 🥳🥳🥳 
+
+
 
 ## Custom ROMs
 
@@ -122,7 +138,7 @@ Custom ROMs bring a plethora of different things to our phones. Some have custom
 So, what we're gonna do here is as follows:
 1. Flash all data on the device
 2. Use the .zip files flash-all script to install the system
-3. flash custom kernel (if need be, this is entirely optional)
+3. flash addons / custom kernel (if need be, this is entirely optional)
 4. reboot into our new system
 
 see? I told you, it really is as simple as that. We will also cover how to properly update your system and maintain root status without your Magisk modules breaking during the update. Let's move forward! 
@@ -131,7 +147,11 @@ see? I told you, it really is as simple as that. We will also cover how to prope
 1. Download your preferred ROMs .zip file
 2. Extract the folder (or use the same folder you extracted for patching the boot.img file)
 3. Navigate into the extracted folder and locate the flash-all.sh (or flash-all.bat for Windows)
-4. reboot your phone into bootloader mode using ```sh adb reboot bootloader```
-5. Once the phone has re-booted, run ```sh fastboot -w``` to **wipe** the phone's data
-6. Run ```sh ./flash-all.sh``` **do not touch the phone during this process**
+4. reboot your phone into bootloader mode using ```adb reboot bootloader```
+5. Once the phone has re-booted, run ```fastboot -w``` to **wipe** the phone's data
+6. Run ```./flash-all.sh``` **do not touch the phone during this process**
 7. Once the flash is done, the phone will return to bootloader mode. Now is the time to flash any addons or modifications (i.e. Google Apps, patched boot.img, or custom kernel). So, flash any additional files you need now. For example, if you want to root the ROM, flash the VBmeta.img file and flash the patched boot.img.
+
+See [VB Meta](#vbmetaimg-and-veritity) for info about disabling Veritity
+
+See [Rooting Steps](#rooting-steps) for info about patching boo.img and flashing Magisk

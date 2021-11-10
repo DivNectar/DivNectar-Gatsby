@@ -62,8 +62,14 @@ main {
   }
 }
 
+.deckgo-highlight-code-carbon {
+  max-width: 800px;
+}
+
 a {
   color: ${(props) => props.theme.purple};
+  font-weight: bold;
+  text-decoration: none;
 }
 
 pre.prism-code {

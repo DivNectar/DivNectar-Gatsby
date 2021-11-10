@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 // custom components
 import Navbar from "./navbar"
 import { Footer } from "./footer"
@@ -27,6 +27,7 @@ const Container = styled.div<Props>`
 const Layout: React.FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState("dark")
 
+    deckDeckGoHighlightElement();
   // The function that toggles between themes
   const toggleTheme = () => {
     console.log("toggled the theme")
