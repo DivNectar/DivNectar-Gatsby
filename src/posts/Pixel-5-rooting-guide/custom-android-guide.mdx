@@ -1,7 +1,7 @@
 ---
 title: "Android Rooting & Flashing Guide"
 date: 11-2-2021
-slug: "vandroid-guide"
+slug: "android-guide"
 featuredImage: ./android-root.png
 type: "post"
 tags: ["android", "flashing"]
@@ -9,7 +9,15 @@ tags: ["android", "flashing"]
 
 # Definitive Guide to Pixel 5 Rooting / Custom Roms
 
-Custom ROMs...ahh, the beatuty of AOSP (Android Open Sourcce Project), of which most custom ROMs are based upon. Either that, or Lineage os (for the most part). I, myself, am a big fan of Kdrag0n's custom ROM, ProtonAOSP. It's a custom ROM built for simplicity, speed, and efficency. I'm quite active on the telegram group, and I see alot of people who are unsure of how to go about flashing a custom ROM, much less rooting said ROM and getting Safteynet working. What's that you ask? I've heard that alot as of late. So, to begin, I want to go over some common terminology related to rooting, custom ROMs, and flashing. So, let's get started!
+I've been a pretty active member of the custom-android scene as of late. I've also been seeing alot of users getting into, or sometimes **back*** into custom ROMs, and generally having no clue as lots of things have changed since the olden day of Cyanogenmod, ParanoidAndroid, Dirty Unicorns, etc...if those names make you feel lost, they are just some old, popular ROMs people used a few years ago.
+
+With the release of Android 12, I thought it would be helpful to people to compile a list of common terms, and procedures to achieve different goals on your Android device. 
+
+**TLDR;**
+
+- See [Rooting Steps](#rooting-steps)
+- See [Custom ROMs](#custom-roms)
+- See [Updating While Rooted](#updating-steps)
 
 ## Who is this guide for?
 This guide is for anyone who wants to learn more about the Android customization scene. I will admit, it's mostly geared twards Pixel owners, as these devices are very close to stock android. Other devices, like the OnePlus phones, as well as Samsung phones, contain many many tweaks and customizations from the manufacturers, and tend to cause issues when using the methods listed here. This guide can still be useful to you in understanding the broader picture, however.
@@ -24,7 +32,7 @@ The installation method varies between linux distros.
 
 **Debian/Ubuntu/POP OS/ Zorin/ (most) Users**
 ```shell
-sudo apt-get install android-tools-adb
+sudo apt-get install android-sdk-platform-tools-common​
 ```
 
 **Fedora / Opensuse Users**
@@ -33,7 +41,11 @@ sudo dnf install android-tools
 ```
 
 **Arch Linux Users**
-I'm sure you already know what to do...
+```shell
+pacaur -S android-sdk-platform-tools
+```
+
+If you are having permission issues when trying to detect your device on Linux, you probably need to fix your [uDev Rules](https://github.com/M0Rf30/android-udev-rules)
 
 #### Windows
 1. Download the [latest version of the android SDK platform tools](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
@@ -42,6 +54,8 @@ I'm sure you already know what to do...
 4. find the entry called PATH, and double click it. A new window will open with multiple entries
 5. click add new entry on the right hand side and enter the folder path where you extracted the files (e.x. C:\platform-tools)
 6. open a terminal window (i reccomend Windows terminal over cmd prompt) and type adb to make sure the command is recognized
+
+Adding the tools to your path variable makes it much easier to use, as this allows you to call adb or fastboot from any directory.
 
 ## Terminology
 
@@ -73,6 +87,8 @@ Fastboot is a diagnostic tool which allows you to modify the file system of your
 
 ### VBmeta.img and Veritity
 The VBmeta.img file in your ROM is a cryptographically signed file that contains verification data for verifying the systems boot.img, system.img, and other things in the operating system. In short, to modify your bootloader or flash a custom kernel, this needs to be disabled. Disabling vbmeta is as follows:
+
+#### VBMeta Steps
 1. Extract down into the ROM you are using's zip file, and locate the vbmeta.img file.
 2. Open a terminal / powershell window into the same directory as the vbmeta.img
 3. Run ```adb reboot bootloader```
@@ -155,3 +171,36 @@ see? I told you, it really is as simple as that. We will also cover how to prope
 See [VB Meta](#vbmetaimg-and-veritity) for info about disabling Veritity
 
 See [Rooting Steps](#rooting-steps) for info about patching boo.img and flashing Magisk
+
+## Updating While Rooted
+
+So, you're enjoying your new, customized system...and then, an update is released. How in the world do you go about updating this thing?? 🤔 No worries, it isn't too complicated! Let's run over the general idea of what we're doing, and then we'll cover each update step, one by one.
+
+### The Rundown;
+
+1. We pre-patch the new boot.img using our current system/Magisk install
+2. Place the patched boot.img somewhere on our PC (I reccomend making a "patching" folder inside your extracted ROM folder)
+3. Flash the new ROM using the flash-all.sh
+4. Flash the pre-patched boot.img file (to install Magisk)
+5. Re-flash any addons we need for the OS (such as Google Apps or a custom kernel)
+6. Reboot into the system, and you're done!
+
+See? Really simple. A bit of a headache as compared to just clicking update from the settings app, but it's the price we pay for custom software! Anyways, let's get on to the actual steps now:
+
+### Updating Steps
+
+1. Download your new ROM version from it's website
+2. Extract the ROM somewhere easy to access (like your downloads or desktop)
+3. Extract the zip file inside the ROM, enter that folder, and copy both the boot.img as well as the vbmeta.img
+4. Create a new folder in your ROM folder called "patching" and paste the two .img files into it
+5. Follow the [rooting steps](#rooting-steps) to patch the boot.img with Magisk
+6. Move the patched boot.img file to your pc's "patching" folder we created in step 4
+7. Navigate to your extracted ROM folder using your terminals ```cd``` command
+8. Test adb by running ```adb devices``` to ensure it's detecting it correctly
+9. Start the update by running `./flash-all.sh` and wait until the terminal reports completed
+10. (optional) if you'd like to maintain root, keep following these steps
+11. Disable veritity per the instructions [here](#vbmeta-steps) and procced
+12. Once the device has rebooted back into bootloader mode (with the warning sign) flash the patched Magisk file uisng ```fastboot flash boot magisk-patched``` and press the tab key to auto-complete the long file name, and press enter
+13. Once again, flash any Google apps or custom kernel that you'd like, per the package instructions
+
+And now you're all done and updated! Congrats!
