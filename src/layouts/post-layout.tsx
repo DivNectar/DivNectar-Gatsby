@@ -37,7 +37,7 @@ interface PostTemplateProps {
               width: number
               height: number
               src: string
-            }
+            } | null
           }
         }
       }
@@ -109,7 +109,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
     margin: 1rem;
   `
 
-  const seoImage = frontmatter.featuredImage.childImageSharp.resize
+  const seoImage = frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.resize : null
 
   return (
     <>
@@ -119,7 +119,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
             title={frontmatter.title}
             description={data.mdx.excerpt}
             image={seoImage}
-          // path={props.location.pathname}
+            path={props.location.pathname}
           />
           <FeaturedImage style={{marginTop: '2rem', marginLeft: '1rem'}} alt="featuredImage" image={featuredImage}
               />
