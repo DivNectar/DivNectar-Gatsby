@@ -76,6 +76,7 @@ const InnerScroll = styled.div`
 `;
 
 const toc = ({ toc }: Props) => {
+  console.log(toc);
   return (
     // TODO inject theme provider
     <TocContainer>
