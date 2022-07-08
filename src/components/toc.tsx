@@ -42,11 +42,13 @@ type Props = {
   };
 };
 
+// giving me fucking build errors on Netlify >:(
+//   box-shadow: ${(props) => props.theme.boxShadows.elevation3};
+
 const TocContainer = styled.div`
   position: fixed;
   background-color: ${(props) => props.theme.backgroundSecondary};
   color: ${(props) => props.theme.textPrimary};
-  box-shadow: ${(props) => props.theme.boxShadows.elevation3};
   border-radius: 4px;
   right: 0;
   width: 18%;
