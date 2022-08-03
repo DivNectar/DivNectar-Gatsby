@@ -14,6 +14,50 @@ export const GlobalStyle = createGlobalStyle`
     --logo-secondary: #50fa7b;
   }
 
+  @keyframes flip {
+    from {
+      transform: rotateY(0deg);
+    }
+
+    50% {
+      color: transparent;
+      /* transform: scale(1.3); */
+      /* background-color: lightgray; */
+    }
+
+    to {
+      color: transparent;
+      transform: rotateY(180deg);
+    }
+  }
+
+  .modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    margin: 15% auto;
+  }
+
+  .flip {
+    animation-name: flip;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  .flipBack {
+    animation-name: flip;
+    animation-duration: 1s;
+    animation-direction: reverse;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+  }
+  
+
   .tl-edges {
     overflow-x: visible;
     overflow: visible;
@@ -25,9 +69,10 @@ export const GlobalStyle = createGlobalStyle`
 
 @media only screen and (max-width: 600px) {
   :root{
-    font-size: 12px;
+    font-size: 1.0rem;
   }
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -37,7 +82,7 @@ body {
   color: ${(props) => props.theme.textPrimary};
   background: ${(props) => props.theme.background};
   ${"" /* TODO: make variable for theme transition speed */}
-  transition: background 600ms ease-in;
+  transition: background 1s ease-in;
 }
 
 body::-webkit-scrollbar {

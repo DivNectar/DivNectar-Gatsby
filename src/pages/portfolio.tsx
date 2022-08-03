@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, ImageDataLike } from "gatsby-plugin-image";
-
+import { GatsbyImage, IGatsbyImageData, getImage} from "gatsby-plugin-image";
+import styled from "styled-components";
 import ContentCardStyles from "../styles/content-card.styles"
 import { DefaultTheme, withTheme } from "styled-components"
 
@@ -68,12 +68,16 @@ const portfolioQuery = graphql`query portfolioQuery {
 
 export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
   const data = useStaticQuery(portfolioQuery)
-
+  const FeaturedImage = styled(GatsbyImage)`
+    filter: ${props => props.theme.name == "dark" ? "invert(100%)" : "invert(0%)"}
+    `
   return (
     <>
       <ContentCardStyles.H1 centered>Portfolio</ContentCardStyles.H1>
       <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }: PostNode, index: number) => {
+          const image: IGatsbyImageData = getImage(node.frontmatter.featuredImage.childImageSharp.gatsbyImageData);
+
           return (
             <ContentCardStyles.PostCard key={index}>
               <ContentCardStyles.PostHeader>
@@ -82,7 +86,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
                 >
                   {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore */}
-                  <GatsbyImage image={node.frontmatter.featuredImage.childImageSharp.gatsbyImageData} />
+                  { image ? <FeaturedImage alt="featuredImage" image={getImage(image)} /> : null }
                   {node.frontmatter.title}
                 </ContentCardStyles.PostLink>
               </ContentCardStyles.PostHeader>

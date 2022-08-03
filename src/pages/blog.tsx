@@ -1,35 +1,13 @@
 import React from "react"
 import { useStaticQuery, graphql, } from "gatsby"
-import { GatsbyImage, IGatsbyImageData, ImageDataLike , getImage} from "gatsby-plugin-image";
+import { GatsbyImage, IGatsbyImageData, getImage} from "gatsby-plugin-image";
 
 // TODO combine the post styles here and the post styles for the portfolio into
 import ContentCardStyles from "../styles/content-card.styles"
 import SEO from "../components/seo"
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-
-interface BlogNode {
-  node: {
-    frontmatter: {
-      title: string
-      slug: string
-      date: string
-      tags: string[]
-      featuredImage: {
-        id: string
-        childImageSharp: {
-          gatsbyImageData?: ImageDataLike | undefined,
-          width: 200
-          placeholder: string
-          formats: string[]
-        }
-      }
-    }
-    excerpt: string
-    body: string
-    tableOfContents: unknown
-  }
-}
+import BlogNode from "src/interfaces/BlogNode";
 
 export const Posts = () => {
   // eslint-disable-next-line @typescript-eslint/no-use-before-define

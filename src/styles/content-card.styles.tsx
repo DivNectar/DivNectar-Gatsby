@@ -47,6 +47,7 @@ const ContentCardStyles = {
     font-size: 4rem;
     text-align: center;
   `,
+
   PostCard: styled.div`
     background-color: ${props => props.theme.backgroundSecondary};
     transition: all 600ms ease-in;

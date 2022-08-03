@@ -23,9 +23,6 @@ import GithubIcon from "../svg/github.svg";
 import MoonIcon from "../svg/moon.svg";
 import SunIcon from "../svg/sun.svg";
 
-import { Link } from 'gatsby';
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-
 import { withTheme } from "styled-components";
 
 interface NavbarProps {
@@ -35,7 +32,6 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
-  const transitionColor = theme.backgroundSecondary;
 
   return (
     <Nav>
@@ -76,7 +72,7 @@ export const Navbar = ({ themeToggle, activeTheme, theme }: NavbarProps) => {
             swipe
           >
             <PortfolioIcon />
-            <LinkText className="link-text">Portfolio</LinkText>
+            <LinkText className="link-text">Projects</LinkText>
           </NavLink>
         </NavItem>
 
