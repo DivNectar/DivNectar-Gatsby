@@ -10,11 +10,10 @@ import styled from "styled-components";
 import BlogNode from "src/interfaces/BlogNode";
 
 export const Posts = () => {
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const data = useStaticQuery(postsQuery)
   const history = useHistory();
   // this bit of styled code inverts the image if the theme is set to light
-  const FeaturedImage = styled(GatsbyImage)`
+  const featuredimage = styled(gatsbyimage)`
     filter: ${props => props.theme.name == "dark" ? "invert(100%)" : "invert(0%)"}
     `
   console.log(history);
@@ -25,8 +24,6 @@ export const Posts = () => {
       <ContentCardStyles.H1 centered>Blog</ContentCardStyles.H1>
       <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }: BlogNode, index: number) => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           const image: IGatsbyImageData = getImage(node.frontmatter.featuredImage.childImageSharp.gatsbyImageData);
 
           return (
@@ -34,8 +31,6 @@ export const Posts = () => {
               <ContentCardStyles.TagsContainer>
                 {node.frontmatter.tags.map((tag: string) => {
                   return (
-                    // TODO: Fix key impl here!
-                    // eslint-disable-next-line react/jsx-key
                     <ContentCardStyles.TagChip
                       to={`/tags/${tag}`}
                     >
@@ -51,8 +46,6 @@ export const Posts = () => {
                   {node.frontmatter.title}
                 </ContentCardStyles.PostLink>
                 <div>
-                {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore */}
                   { image ? <FeaturedImage alt="featuredImage" image={getImage(image)} /> : null }
                 </div>
               </ContentCardStyles.PostHeader>
@@ -76,12 +69,7 @@ const postsQuery = graphql`query postsQuery {
           featuredImage {
             id
             childImageSharp {
-              gatsbyImageData(
-                width: 200
-                height: 200
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-                )
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }

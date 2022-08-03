@@ -4,6 +4,7 @@ import { GatsbyImage, IGatsbyImageData, getImage} from "gatsby-plugin-image";
 import styled from "styled-components";
 import ContentCardStyles from "../styles/content-card.styles"
 import { DefaultTheme, withTheme } from "styled-components"
+import SEO from "../components/seo"
 
 interface PortfolioProps {
   theme: DefaultTheme,
@@ -73,6 +74,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
     `
   return (
     <>
+      <SEO title={"DivNectar Projects"} description={"Sewdohe's past and current projects"} />
       <ContentCardStyles.H1 centered>Portfolio</ContentCardStyles.H1>
       <ContentCardStyles.PostContainer>
         {data.allMdx.edges.map(({ node }: PostNode, index: number) => {
@@ -84,11 +86,11 @@ export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
                 <ContentCardStyles.PostLink
                   to={node.frontmatter.slug}
                 >
-                  {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore */}
-                  { image ? <FeaturedImage alt="featuredImage" image={getImage(image)} /> : null }
-                  {node.frontmatter.title}
+                {node.frontmatter.title}
                 </ContentCardStyles.PostLink>
+                <div>
+                  { image ? <FeaturedImage alt="featuredImage" image={getImage(image)} /> : null }
+                </div>
               </ContentCardStyles.PostHeader>
             </ContentCardStyles.PostCard>
           );
@@ -98,4 +100,4 @@ export const Portfolio: React.FC<PortfolioProps> = ({ theme }) => {
   );
 }
 
-export default withTheme(Portfolio)
+export default Portfolio

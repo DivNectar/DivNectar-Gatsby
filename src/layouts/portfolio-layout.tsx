@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, ImageDataLike } from "gatsby-plugin-image";
-
+import styled from "styled-components";
 
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
@@ -75,11 +75,14 @@ interface PortfolioProps {
 }
 
 const PostTemplate: React.FC<PortfolioProps> = ({ data }) => {
+  const FeaturedImage = styled(GatsbyImage)`
+    filter: ${props => props.theme.name == "dark" ? "invert(100%)" : "invert(0%)"}
+    `
   return (
-    <div>
+    <div style={{marginBottom: '2rem'}}>
       <ContentStyles.PostsContainer>
         <MDXProvider components={MDXStyles}>
-          <GatsbyImage
+          <FeaturedImage
             image={data.mdx.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
             style={{ maxWidth: "250px" }} />
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
