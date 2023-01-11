@@ -37,7 +37,7 @@
     "gatsby-remark-highlight-code": "^3.0.1",
     "gatsby-remark-images": "^6.1.2",
     "gatsby-source-filesystem": "^4.1.1",
-    "gatsby-transformer-remark": "^5.1.2",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^4.1.0",
     "grommet": "^2.18.0",
     "grommet-icons": "^4.6.2",
